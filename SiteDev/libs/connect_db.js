@@ -3,7 +3,7 @@ var db;
 
 module.exports = () =>{
   if(!db){
-    db = mongoose.connect('mongodb://localhost:27017', { useMongoClient: true});
+    db = mongoose.connect('mongodb://localhost:27017/SideSite', { useMongoClient: true});
   }
     return db;
 }
