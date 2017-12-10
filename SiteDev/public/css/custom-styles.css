@@ -242,7 +242,7 @@ margin-top: 10px;
 .site-content .block .input-group {margin-top: 10px;}
 .site-content .block .input-group-btn .btn{border-radius: 0 20px 20px 0; background: #34b091; color: #fff; font-family: 'source_sans_problack'; text-transform: uppercase; border: none; padding: 6px 5px; font-size: 12px; line-height: 23px;}
 .site-content .block .input-group-btn .btn:hover{background: #454855; color: #34b091; transition:all 1s;}
-.input-group .form-control {border-radius: 19px;background: #454855; border: none;}
+.input-group .form-control {border-radius: 19px;background: #97ff91; border: none;}
 .site-content .block .social li a{text-decoration: none; border-bottom: 0;}
 .site-content .block .social{margin-top: 8px;}
 .social [class^="fw-icon-"]{font-size: 18px; width: 40px; height: 40px;
@@ -254,9 +254,11 @@ margin-top: 10px;
 .copy-rights a{color: #34b091;font-size: 14px; font-family: 'source_sans_proregular'; text-decoration: none;}
 .copy-rights a:hover{color: #fff;}
 .grupos{margin-top: 20px;}
-.featured-block .block .linhas-block{height: 25%; width: 100%;}
+.featured-block .block .linhas-block{height: 25;}
 .featured-block .caption .linhas{font-size: 20px;}
 .modal-title{font-size: 23px; line-height: 24px;color: #34b091; text-transform: uppercase;font-family: 'source_sans_probold';  padding-bottom: 10px; letter-spacing: 1px;}
+.featured-block .caption .membros{font-size: 20px; line-height: 20px;color: grey;font-family: "Times New Roman", Times, serif;  padding-bottom: 10px; letter-spacing: 1px;}
+.featured-block .caption .sub-title{font-size: 15px; line-height: 20px;color: grey;font-family: "Times New Roman", Times, serif;  padding-bottom: 10px; letter-spacing: 1px;}
 /************************************************
     Responsive Tweaks starts here
  ************************************************/

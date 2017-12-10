@@ -1,124 +1,206 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-
-    <title>Siderg</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/component.css">
-    <link rel="stylesheet" href="css/custom-styles.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
-
-
-    <link rel="stylesheet" href="css/demo.css">
-    <link rel="stylesheet" href="css/font-awesome-ie7.css">
-
-    <script src="js/jquery.mobilemenu.js"></script>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('.menu').mobileMenu(ff);
-        });
-    </script>
-
-</head>
-
-<body>
-<div class="header-wrapper">
-    <div class="site-name">
-        <h1>Side</h1>
-    </div>
-</div>
-<div class="menu">
-    <div class="navbar">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <i class="fw-icon-th-list"></i>
-                </button>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <title>Siderg</title>
+      <!-- Bootstrap core CSS -->
+      <link href="css/bootstrap.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/normalize.css">
+      <link rel="stylesheet" href="css/component.css">
+      <link rel="stylesheet" href="css/custom-styles.css">
+      <link rel="stylesheet" href="css/font-awesome.css">
+      <link rel="stylesheet" href="css/demo.css">
+      <link rel="stylesheet" href="css/font-awesome-ie7.css">
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+   </head>
+   <body>
+      <div class="header-wrapper">
+         <div class="site-name">
+            <h1>Side</h1>
+         </div>
+      </div>
+      <div class="menu">
+         <div class="navbar">
+            <div class="container">
+               <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <i class="fw-icon-th-list"></i>
+                  </button>
+               </div>
+               <div class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav">
+                     <li><a href="/">Home</a></li>
+                     <li><a href="/membros">Membros</a></li>
+                     <li><a href="/projetos">Projetos</a></li>
+                     <li><a href="#">Sobre</a></li>
+                     <li><a href="#">Contato</a></li>
+                  </ul>
+               </div>
+               <!--/.navbar-collapse -->
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Membros</a></li>
-                    <li><a href="#">Projetos</a></li>
-                    <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Contato</a></li>
-                </ul>
-            </div><!--/.navbar-collapse -->
-        </div>
-    </div>
-    <div class="mini-menu">
-        <label>
-            <select class="selectnav">
-                <option value="#" selected="">Home</option>
-                <option value="#">Membros</option>
-                <option value="#">Projetos</option>
-                <option value="#">Sobre</option>
-                <option value="#">Contato</option>
-            </select>
-        </label>
-    </div>
-</div>
-
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="banner">
-    <div id="carousel-example-generic" class="carousel slide">
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
+         </div>
+         <div class="mini-menu">
+            <label>
+               <select class="selectnav">
+                  <option value="/" selected="">Home</option>
+                  <option value="/membros">Membros</option>
+                  <option value="/projetos">Projetos</option>
+                  <option value="#">Sobre</option>
+                  <option value="#">Contato</option>
+               </select>
+            </label>
+         </div>
+      </div>
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="banner">
+      <div id="carousel-example-generic" class="carousel slide">
+         <!-- Wrapper for slides -->
+         <div class="carousel-inner">
             <div class="item active">
-                <img src="img/banner-image.jpg" alt="ifpb">
-                <div class="carousel-caption">
-                </div>
+               <img src="img/banner-image.jpg" alt="ifpb">
+               <div class="carousel-caption">
+               </div>
             </div>
+         </div>
+      </div>
+      <div class="container">
+
+    <form class="well form-horizontal" action="/add-projeto" method="post"  id="contact_form">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Contact Us Today!</legend>
+
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Título</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+        <input name="titulo" class="form-control" type="text">
     </div>
+  </div>
 </div>
 
-<div class="footer-wrapper">
-    <div class="site-content">
-        <div class="container">
-            <div class="row">
+<!-- Text input-->
 
-
-            </div>
-        </div>
+<div class="form-group">
+  <label class="col-md-4 control-label">Data de início</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+        <input name="dataInicio" class="form-control" type="date">
     </div>
-    <div class="copy-rights">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-6">
-
-                </div>
-                <div class="col-md-6">
-
-                </div>
-
-            </div>
-        </div>
-    </div>
+  </div>
 </div>
 
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Data de fim</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+        <input name="dataFim" class="form-control" type="date">
+    </div>
+  </div>
+</div>
+<!-- radio checks -->
+ <div class="form-group">
+                        <label class="col-md-4 control-label">Membros</label>
+                        <div class="col-md-4">
+                          <%for(var i = 0; i < membros.length; i++) { %>
+                            <div class="radio">
+                                <label>
+                                    <input type="checkbox" name="membros" value=<%=membros[i].nome%> /> <%= membros[i].nome%>
+                                </label>
+                            </div>
+                            <%}%>
+                        </div>
+                    </div>
 
 
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-warning" >Send <span class="glyphicon glyphicon-send"></span></button>
+  </div>
+</div>
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="js/jquery-1.9.1.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+</fieldset>
+</form>
+</div>
+    </div><!-- /.container -->
+      <div class="footer-wrapper">
+         <div class="site-content">
+            <div class="container">
+               <div class="row">
+               </div>
+            </div>
+         </div>
+         <div class="copy-rights">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-6">
+                  </div>
+                  <div class="col-md-6">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Modal form
+      ================================================== -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title" id="exampleModalLabel">Cadastrar Membro</h1>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="add-membro" method="POST" enctype="multipart/form-data">
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="recipient-name" class="form-control-label">Nome:</label>
+                  <input type="text" class="form-control" id="recipient-name" name="nome">
+                  <label for="recipient-name" class="form-control-label">Email:</label>
+                  <input type="text" class="form-control" id="recipient-name" name="email">
+                  <label for="recipient-name" class="form-control-label">Titulação:</label>
+                  <input type="text" class="form-control" id="recipient-name" name="titulo">
+                  <label for="recipient-name" class="form-control-label">Professor</label>
+                  <input type="radio" id="radioButton" name="tipo" value="professor" checked><br>
+                  <label for="recipient-name" class="form-control-label" >Aluno</label>
+                  <input type="radio" id="radioButton" name="tipo" value="aluno"><br>
+                  <label for="recipient-name" class="form-control-label">Exmembro</label>
+                  <input type="radio" id="radioButton" name="tipo" value="exmembro">
+                  <input type="file" name="imagem" id="imagem">
+                </div>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Send message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Bootstrap core JavaScript
+         ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="js/jquery-1.9.1.js"></script>
+      <script src="js/bootstrap.js"></script>
+      <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+      <script type="text/javascript">
 
-
-</body>
+      </script>
+   </body>
 </html>

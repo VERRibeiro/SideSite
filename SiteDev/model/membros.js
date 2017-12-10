@@ -4,9 +4,10 @@ module.exports = () =>{
 
   var membro = Schema({
     nome: String,
-    titulacao: String,
     email: String,
-    tipo: String
+    titulo: String,
+    tipo: String,
+    imagem: {type: String, default: 'xqdele'}    
   });
   return db.model('membros',membro);
 }
