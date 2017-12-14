@@ -60,9 +60,9 @@
     <div class="mini-menu">
         <label>
             <select class="selectnav">
-                <option value="#" selected="">Home</option>
-                <option value="#">Membros</option>
-                <option value="#">Projetos</option>
+                <option value="/" selected="">Home</option>
+                <option value="/membros">Membros</option>
+                <option value="/projetos">Projetos</option>
                 <option value="#">Sobre</option>
                 <option value="#">Contato</option>
             </select>
@@ -92,19 +92,26 @@
                <h1>Projetos Atuais</h1>
             </div>
             <div class="col-md-12">
-               <a class="btn" href="/cadastrarProjeto">Cadastrar Projetos</a>
+               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Cadastrar Projetos</button>
             </div>
             <div class="row">
                <%for (var i = 0; i < projetos.length; i++){ %>
-               <div class="col-md-3">
+                 <%if(projetos[i].dataFim == "undefined/undefined/"){ %>
+               <div class="col-md-12">
                   <div class="block">
                      <div class="thumbnail linhas-block">
                         <div class="caption">
                           <h2 class="membros"><%=projetos[i].titulo%></h2>
+                          <h3 class="sub-title">Membros: </h3>
+                          <%for (var j = 0; j < projetos[i].membros.length; j++){ %>
+                            <h3 class="sub-title"><%=projetos[i].membros[j] %></h3>
+                            <% } %>
+                            <h3 class="sub-title">Data de início: <%=projetos[i].dataInicio%></h3>
                         </div>
                      </div>
                   </div>
                </div>
+               <% } %>
                <% } %>
             </div>
          </div>
@@ -116,17 +123,23 @@
             </div>
             <div class="row">
                <%for (var i = 0; i < projetos.length; i++){ %>
-               <div class="col-md-3">
+                 <%if(projetos[i].dataFim != "undefined/undefined/"){ %>
+               <div class="col-md-12">
                   <div class="block">
                      <div class="thumbnail linhas-block">
                         <div class="caption">
-                           <h2 class="membros"><%=projetos[i].titulo%></h2>
-                           <h3 class="sub-title">Data de início: <%=projetos[i].dataInicio%></h3>
-                           <h3 class="sub-title">Data final: <%=projetos[i].dataFim%></h3>
+                          <h2 class="membros"><%=projetos[i].titulo%></h2>
+                          <h3 class="sub-title">Membros: </h3>
+                          <%for (var j = 0; j < projetos[i].membros.length; j++){ %>
+                            <h3 class="sub-title"><%=projetos[i].membros[j] %></h3>
+                            <% } %>
+                            <h3 class="sub-title">Data de início: <%=projetos[i].dataInicio%></h3>
+                            <h3 class="sub-title">Data final: <%=projetos[i].dataFim%></h3>
                         </div>
                      </div>
                   </div>
                </div>
+               <% } %>
                <% } %>
             </div>
          </div>
@@ -160,7 +173,44 @@
 </div>
 
 
-
+<!-- Modal form
+================================================== -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel">Cadastrar Membro</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="add-projeto" method="POST">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="recipient-name" class="form-control-label">Titulo:</label>
+            <input type="text" class="form-control" id="recipient-name" name="titulo">
+            <label for="recipient-name" class="form-control-label">Data de início:</label>
+            <input type="date" class="form-control" id="recipient-name" name="dataInicio">
+            <label for="recipient-name" class="form-control-label">Data final:</label>
+            <input type="date" class="form-control" id="recipient-name" name="dataFim">
+            <label for="recipient-name" class="form-control-label">Membros</label>
+            <%for(var i = 0; i < membros.length; i++) { %>
+            <div class="radio">
+               <label>
+               <input type="checkbox" name="membros" value=<%=membros[i].nome%> /> <%= membros[i].nome%>
+               </label>
+            </div>
+            <%}%>
+          </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Send message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

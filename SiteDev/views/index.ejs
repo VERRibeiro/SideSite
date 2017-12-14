@@ -55,8 +55,8 @@
         <label>
             <select class="selectnav">
                 <option value="/" selected="">Home</option>
-                <option value="#">Membros</option>
-                <option value="#">Projetos</option>
+                <option value="/membros">Membros</option>
+                <option value="/projetos">Projetos</option>
                 <option value="#">Sobre</option>
                 <option value="#">Contato</option>
             </select>
@@ -102,6 +102,7 @@
       </div>
   </div>
 </div>
+
 <div class="row grupos">
           <div class="caption">
               <div class="col-md-12">
@@ -112,11 +113,11 @@
               </div>
             <div class="row">
               <%for (var i = 0; i < tasks.length; i++){  %>
-              <div class="col-md-3">
+              <div class="col-md-6">
                   <div class="block">
                       <div class="thumbnail linhas-block">
                           <div class="caption">
-                              <h1 class="linhas"><%= tasks[i].nome %> </h1>
+                              <p class=><%= tasks[i].nome %> </p>
                           </div>
                       </div>
                   </div>
@@ -184,9 +185,6 @@
 <script src="js/jquery-1.9.1.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-<script>
-  console.log("ALOU");
-</script>
 
 </body>
 </html>

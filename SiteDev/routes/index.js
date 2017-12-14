@@ -5,6 +5,7 @@ var membrosModel = require('./../model/membros')();
 var projetosModel = require('./../model/projetos')();
 var multer = require('multer');
 var mongoose = require('mongoose');
+var async = require('async');
 
 var multerConf ={
   storage : multer.diskStorage({
@@ -59,14 +60,34 @@ router.post('/add-membro',multer(multerConf).single('imagem'),(req,res,next) =>{
 });
 
 router.get('/projetos',(req, res, next)=>{
-  projetosModel.find(null, (err, projetos) =>{
-    if(err){
-      console.log(err);
-    }else{
-      var projetosMembros = {};
-      res.render('projetos',{projetos:projetos});
-    }
-  });
+  async.parallel({
+  		projetos: function(callback) {
+  			projetosModel.find({})
+  				.then(function(projetos) {
+  					callback(null, projetos);
+  				})
+  				.catch(function(err) {
+  					callback(err, null);
+  				});
+  		},
+  		membros: function(callback) {
+  			membrosModel.find({})
+  				.then(function(membros) {
+  					callback(null, membros);
+  				})
+  				.catch(function(err) {
+  					callback(err, null);
+  				});
+  		}
+  	}, function(err, results) {
+  		if(err)
+  			return res.render('error');
+
+  		res.render('projetos', {
+      	projetos: results.projetos,
+        membros: results.membros
+      });
+  	});
 });
 
 router.get('/cadastrarProjeto', function(req, res, next) {
@@ -80,15 +101,18 @@ router.get('/cadastrarProjeto', function(req, res, next) {
 });
 
 router.post('/add-projeto',(req,res,next) =>{
+
   var dataFimArray = req.body.dataFim.split('-');
   var dataFimString = "";
   var dataFimString = dataFimArray[2]+'/'+dataFimArray[1]+'/'+dataFimArray[0];
-  var dataInicioArray = req.body.dataFim.split('-');
+  var dataInicioArray = req.body.dataInicio.split('-');
   var dataInicioString = "";
   var dataInicioString = dataInicioArray[2]+'/'+dataInicioArray[1]+'/'+dataInicioArray[0];
+
   req.body.dataFim = dataFimString;
   req.body.dataInicio = dataInicioString;
   var body = req.body;
+  console.log(body);
   projetosModel.create(body, (err,projetos)=>{
     if(err)
       throw err;

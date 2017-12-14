@@ -259,6 +259,10 @@ margin-top: 10px;
 .modal-title{font-size: 23px; line-height: 24px;color: #34b091; text-transform: uppercase;font-family: 'source_sans_probold';  padding-bottom: 10px; letter-spacing: 1px;}
 .featured-block .caption .membros{font-size: 20px; line-height: 20px;color: grey;font-family: "Times New Roman", Times, serif;  padding-bottom: 10px; letter-spacing: 1px;}
 .featured-block .caption .sub-title{font-size: 15px; line-height: 20px;color: grey;font-family: "Times New Roman", Times, serif;  padding-bottom: 10px; letter-spacing: 1px;}
+.profile-image{width: 128px !important; height: 128px !important;}
+.rounded-image{border-radius: 50%;}
+.centered-image{margin: 0px auto;}
+@media (max-width: 768px){.featured-block .block img.profile-image{width: 150px !important; height: 150px !important;} }
 /************************************************
     Responsive Tweaks starts here
  ************************************************/

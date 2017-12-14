@@ -80,11 +80,11 @@
                   <div class="row">
                      <%for (var i = 0; i < membros.length; i++){ %>
                      <%if(membros[i].tipo == 'professor'){ %>
-                     <div class="col-md-3">
+                     <div class="col-md-4 col-sm-4">
                         <div class="block">
                            <div class="thumbnail linhas-block">
                               <div class="caption">
-                                <img src="uploads/<%=membros[i].imagem%>" alt="imagem" class="img-responsive">
+                                <img src="uploads/<%=membros[i].imagem%>" alt="imagem" class="img-responsive profile-image centered-image rounded-image">
                                 <h2 class="membros"><%=membros[i].nome%></h2>
                                 <h2 class="membros"><%=membros[i].titulo%></h2>
                               </div>
@@ -104,11 +104,11 @@
                   <div class="row">
                      <%for (var i = 0; i < membros.length; i++){ %>
                      <%if(membros[i].tipo == 'aluno'){ %>
-                     <div class="col-md-3">
+                      <div class="col-md-4 col-sm-4">
                         <div class="block">
                            <div class="thumbnail linhas-block">
                               <div class="caption">
-                                <img src="uploads/<%=membros[i].imagem%>" alt="imagm" class="img-responsive">
+                                <img src="uploads/<%=membros[i].imagem%>" alt="imagm" class="img-responsive profile-image centered-image rounded-image">
                                  <h2 class="membros"><%=membros[i].nome%></h2>
                               </div>
                            </div>
@@ -122,16 +122,16 @@
             <div class="row grupos">
                <div class="caption">
                   <div class="col-md-12">
-                     <h1>Membros Alunos</h1>
+                     <h1>Ex-Membros</h1>
                   </div>
                   <div class="row">
                      <%for (var i = 0; i < membros.length; i++){ %>
                      <%if(membros[i].tipo == 'exmembro'){ %>
-                     <div class="col-md-3">
+                      <div class="col-md-4 col-sm-4">
                         <div class="block">
                            <div class="thumbnail linhas-block">
                               <div class="caption">
-                                <img src="uploads/<%=membros[i].imagem%>" alt="imagem" class="img-responsive">
+                                <img src="uploads/<%=membros[i].imagem%>" alt="imagem" class="img-responsive profile-image centered-image rounded-image">
                                  <h2 class="membros"><%=membros[i].nome%></h2>
                                  <h2 class="membros"><%=membros[i].titulo%></h2>
                               </div>
@@ -208,7 +208,6 @@
       <script src="js/bootstrap.js"></script>
       <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
       <script type="text/javascript">
-
       </script>
    </body>
 </html>
