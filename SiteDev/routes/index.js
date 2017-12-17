@@ -5,6 +5,7 @@ var membrosModel = require('./../model/membros')();
 var projetosModel = require('./../model/projetos')();
 var multer = require('multer');
 var mongoose = require('mongoose');
+var fs = require('fs');
 var async = require('async');
 
 var multerConf ={
@@ -118,5 +119,31 @@ router.post('/add-projeto',(req,res,next) =>{
       throw err;
     res.redirect('/projetos');
   });
+});
+
+router.get('/delete-linha/:id', function(req, res, next) {
+  var id = req.params.id;
+  model.findByIdAndRemove(id, (err, linha) => {
+  res.redirect('/');
+});
+});
+
+router.get('/delete-projeto/:id', function(req, res, next) {
+  var id = req.params.id;
+  projetosModel.findByIdAndRemove(id, (err, projeto) => {
+  res.redirect('/projetos');
+});
+});
+
+router.get('/delete-membro/:id', function(req, res, next) {
+  var id = req.params.id;
+  membrosModel.findByIdAndRemove(id, (err, membro) => {
+  var path = './public/uploads/' + membro.imagem;
+  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAS");
+  console.log(path);
+  fs.unlink(path, ()=>{
+    res.redirect('/membros');
+  });
+});
 });
 module.exports = router;

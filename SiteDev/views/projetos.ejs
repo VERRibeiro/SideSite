@@ -107,6 +107,7 @@
                             <h3 class="sub-title"><%=projetos[i].membros[j] %></h3>
                             <% } %>
                             <h3 class="sub-title">Data de início: <%=projetos[i].dataInicio%></h3>
+                            <a href="/delete-projeto/<%=projetos[i]._id%>" class="btn btn-primary">Deletar</a>
                         </div>
                      </div>
                   </div>
@@ -135,6 +136,7 @@
                             <% } %>
                             <h3 class="sub-title">Data de início: <%=projetos[i].dataInicio%></h3>
                             <h3 class="sub-title">Data final: <%=projetos[i].dataFim%></h3>
+                            <a href="/delete-projeto/<%=projetos[i]._id%>" class="btn btn-primary">Deletar</a>
                         </div>
                      </div>
                   </div>

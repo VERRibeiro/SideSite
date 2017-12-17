@@ -262,7 +262,9 @@ margin-top: 10px;
 .profile-image{width: 128px !important; height: 128px !important;}
 .rounded-image{border-radius: 50%;}
 .centered-image{margin: 0px auto;}
+.hidden{visibility: hidden;}
 @media (max-width: 768px){.featured-block .block img.profile-image{width: 150px !important; height: 150px !important;} }
+
 /************************************************
     Responsive Tweaks starts here
  ************************************************/
