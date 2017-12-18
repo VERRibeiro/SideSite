@@ -3,8 +3,11 @@ var router = express.Router();
 var model = require('./../model/tasks')();
 var membrosModel = require('./../model/membros')();
 var projetosModel = require('./../model/projetos')();
+var usuario = require('../model/users');
 var multer = require('multer');
 var mongoose = require('mongoose');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 var fs = require('fs');
 var async = require('async');
 
@@ -19,8 +22,44 @@ var multerConf ={
      }
    }),
 };
+passport.use(new LocalStrategy(
+  function(username,password,done){
+    usuario.getUsuarioByUsername(username, function(err, user){
+      if(err)
+        throw err;
+      if(!user){
+        return done(null, false,{message: 'Usuário anônimo'});
+      }
+      usuario.comparePassword(password, user.password, function(err,isMatch){
+        if(err)
+          throw err;
+        if(isMatch){
+          return done(null, user);
+        }else{
+          return done(null, false, {message: 'Senha incorreta'});
+        }
+      });
+    });
+  }));
 
+function ensureAuthenticated(req, res, next){
+  if(req.isAuthenticated()){
+    return next();
+  }else{
+    res.redirect('/login');
+  }
+}
 
+passport.serializeUser(function(user, done) {
+  console.log(user);
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  usuario.getUsuarioById(id, function(err, user) {
+    done(err, user);
+  });
+});
 /* GET home page. */
 router.get('/', function(req, res, next) {
   model.find(null, (err,tasks) =>{
@@ -38,6 +77,16 @@ router.post('/add-linha',(req,res,next) =>{
     if(err)
       throw err;
     res.redirect('/');
+  });
+});
+
+router.get('/cadastrar',ensureAuthenticated, (req, res, next) =>{
+  membrosModel.find(null, (err, membros)=>{
+    if(err){
+      console.log(err);
+    }else{
+      res.render('cadastrar',{membros:membros});
+    }
   });
 });
 
@@ -139,11 +188,39 @@ router.get('/delete-membro/:id', function(req, res, next) {
   var id = req.params.id;
   membrosModel.findByIdAndRemove(id, (err, membro) => {
   var path = './public/uploads/' + membro.imagem;
-  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAS");
-  console.log(path);
   fs.unlink(path, ()=>{
     res.redirect('/membros');
   });
 });
 });
+
+router.get('/login', function(req, res, next) {
+  res.render('login');
+});
+
+router.post('/login',
+  passport.authenticate('local', { successRedirect: '/',failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
+router.post('/cadastrar', function(req, res, next) {
+  var username = req.body.username;
+  var password = req.body.password;
+  var novoUsuario = new usuario({
+    username: username,
+    password: password
+  });
+  usuario.createUser(novoUsuario, function(err,usuario){
+    if(err)
+      throw err;
+    else {
+      res.redirect('/');
+    }
+  });
+});
+
+router.get('/logout',function(req, res){
+  req.logout();
+  res.redirect('/login');
+})
 module.exports = router;

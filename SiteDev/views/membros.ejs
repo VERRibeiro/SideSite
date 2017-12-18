@@ -24,36 +24,37 @@
          </div>
       </div>
       <div class="menu">
-         <div class="navbar">
-            <div class="container">
-               <div class="navbar-header">
-                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                  <i class="fw-icon-th-list"></i>
-                  </button>
-               </div>
-               <div class="navbar-collapse collapse">
-                  <ul class="nav navbar-nav">
-                     <li><a href="/">Home</a></li>
-                     <li><a href="/membros">Membros</a></li>
-                     <li><a href="/projetos">Projetos</a></li>
-                     <li><a href="#">Sobre</a></li>
-                     <li><a href="#">Contato</a></li>
-                  </ul>
-               </div>
-               <!--/.navbar-collapse -->
+        <div class="navbar">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <i class="fw-icon-th-list"></i>
+              </button>
             </div>
-         </div>
-         <div class="mini-menu">
-            <label>
-               <select class="selectnav">
-                  <option value="/" selected="">Home</option>
-                  <option value="/membros">Membros</option>
-                  <option value="#">Projetos</option>
-                  <option value="#">Sobre</option>
-                  <option value="#">Contato</option>
-               </select>
-            </label>
-         </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="/login">Log in</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/membros">Membros</a></li>
+                <li><a href="/projetos">Projetos</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Contato</a></li>
+              </ul>
+            </div><!--/.navbar-collapse -->
+          </div>
+        </div>
+        <div class="mini-menu">
+          <label>
+            <select class="selectnav" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+              <option value="/login">login</option>
+              <option value="/">Home</option>
+              <option value="/membros" selected="">Membros</option>
+              <option value="/projetos">Projetos</option>
+              <option value="#">Sobre</option>
+              <option value="#">Contato</option>
+            </select>
+          </label>
+        </div>
       </div>
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="banner">
@@ -80,7 +81,7 @@
                   <div class="row">
                      <%for (var i = 0; i < membros.length; i++){ %>
                      <%if(membros[i].tipo == 'professor'){ %>
-                     <div class="col-md-4 col-sm-4">
+                     <div class="col-md-4 col-sm-6">
                         <div class="block">
                            <div class="thumbnail linhas-block">
                               <div class="caption">
@@ -105,7 +106,7 @@
                   <div class="row">
                      <%for (var i = 0; i < membros.length; i++){ %>
                      <%if(membros[i].tipo == 'aluno'){ %>
-                      <div class="col-md-4 col-sm-4">
+                      <div class="col-md-4 col-sm-6">
                         <div class="block">
                            <div class="thumbnail linhas-block">
                               <div class="caption">
@@ -129,7 +130,7 @@
                   <div class="row">
                      <%for (var i = 0; i < membros.length; i++){ %>
                      <%if(membros[i].tipo == 'exmembro'){ %>
-                      <div class="col-md-4 col-sm-4">
+                      <div class="col-md-4 col-sm-6">
                         <div class="block">
                            <div class="thumbnail linhas-block">
                               <div class="caption">

@@ -157,7 +157,7 @@ p{padding-bottom: 25px; margin: 0;}
 .featured-block .block .thumbnail{box-shadow: 0 3px 3px 0 #e0e0e0;}
 .featured-block .caption{padding: 25px 15px;}
 .featured-block .caption h1{font-size: 25px; line-height: 24px;color: #34b091; text-transform: uppercase;font-family: 'source_sans_probold';  padding-bottom: 10px; letter-spacing: 1px;}
-.featured-block .caption p{font-size: 20px; line-height: 24px; color: #616161;font-family: 'source_sans_proregular';}
+.featured-block .caption p{font-size: 20px; line-height: 24px;color: #32544e;font-family: "Times New Roman", Times, serif;  padding-bottom: 10px; letter-spacing: 1px;}
 .featured-block .caption .btn{color: #fff; background: #34b091; font-size: 12px; font-family: 'source_sans_problack'; border-radius: 30px; text-transform: uppercase; line-height: 13px;}
 .featured-block .caption .btn:hover{color: #fff; background: #454855; transition:all 1s;}
 
@@ -257,12 +257,13 @@ margin-top: 10px;
 .featured-block .block .linhas-block{height: 25;}
 .featured-block .caption .linhas{font-size: 20px;}
 .modal-title{font-size: 23px; line-height: 24px;color: #34b091; text-transform: uppercase;font-family: 'source_sans_probold';  padding-bottom: 10px; letter-spacing: 1px;}
-.featured-block .caption .membros{font-size: 20px; line-height: 20px;color: grey;font-family: "Times New Roman", Times, serif;  padding-bottom: 10px; letter-spacing: 1px;}
-.featured-block .caption .sub-title{font-size: 15px; line-height: 20px;color: grey;font-family: "Times New Roman", Times, serif;  padding-bottom: 10px; letter-spacing: 1px;}
+.featured-block .caption .membros{font-size: 16px; line-height: 20px;color: #3f9887;font-family: "Times New Roman", Times, serif;  padding-bottom: 10px;padding-top: 10px;letter-spacing: 1px;}
+.featured-block .caption .sub-title{font-size: 15px; line-height: 20px;color: #3f9887;font-family: "Times New Roman", Times, serif;  padding-bottom: 10px; letter-spacing: 1px;}
 .profile-image{width: 128px !important; height: 128px !important;}
 .rounded-image{border-radius: 50%;}
-.centered-image{margin: 0px auto;}
+.centered-image{margin: 0px auto; margin-bottom:5px ;}
 .hidden{visibility: hidden;}
+.featured-block .caption .project-title{font-size: 25px; line-height: 20px;color: #37d2ab;font-family: "Times New Roman", Times, serif;  padding-bottom: 10px; letter-spacing: 1px;}
 @media (max-width: 768px){.featured-block .block img.profile-image{width: 150px !important; height: 150px !important;} }
 
 /************************************************
