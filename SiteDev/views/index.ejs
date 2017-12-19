@@ -1,193 +1,191 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="">
+      <meta name="author" content="">
 
 
-    <title>Siderg</title>
+      <title>Siderg</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/component.css">
-    <link rel="stylesheet" href="css/custom-styles.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
+      <!-- Bootstrap core CSS -->
+      <link href="css/bootstrap.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/normalize.css">
+      <link rel="stylesheet" href="css/component.css">
+      <link rel="stylesheet" href="css/custom-styles.css">
+      <link rel="stylesheet" href="css/font-awesome.css">
 
 
-    <link rel="stylesheet" href="css/demo.css">
-    <link rel="stylesheet" href="css/font-awesome-ie7.css">
+      <link rel="stylesheet" href="css/demo.css">
+      <link rel="stylesheet" href="css/font-awesome-ie7.css">
 
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
 
-</head>
+  </head>
 
-<body>
-<div class="header-wrapper">
-    <div class="site-name">
-        <h1>Side</h1>
-    </div>
-</div>
-<div class="menu">
-  <div class="navbar">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <i class="fw-icon-th-list"></i>
-        </button>
+  <body>
+  <div class="header-wrapper">
+      <div class="site-name">
+          <h1>Side</h1>
       </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li><a href="/login">Log in</a></li>
-          <li><a href="/">Home</a></li>
-          <li><a href="/membros">Membros</a></li>
-          <li><a href="/projetos">Projetos</a></li>
-          <li><a href="#">Sobre</a></li>
-          <li><a href="/logout">Contato</a></li>
-        </ul>
-      </div><!--/.navbar-collapse -->
-    </div>
   </div>
-  <div class="mini-menu">
-    <label>
-      <select class="selectnav" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-        <option value="/login">login</option>
-        <option value="/" selected="">Home</option>
-        <option value="/membros">Membros</option>
-        <option value="/projetos">Projetos</option>
-        <option value="#">Sobre</option>
-        <option value="#">Contato</option>
-      </select>
-    </label>
-  </div>
-</div>
-
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="banner">
-    <div id="carousel-example-generic" class="carousel slide">
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-            <div class="item active">
-                <img src="img/banner-image.jpg" alt="ifpb">
-                <div class="carousel-caption">
-                </div>
-            </div>
-    </div>
-</div>
-</div>
-<div class="container">
-    <div class="featured-block">
-      <div class="row">
-        <div class="caption">
-        <h1>Semantics In Distributed Environments</h1>
+  <div class="menu">
+    <div class="navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <i class="fw-icon-th-list"></i>
+          </button>
         </div>
-        <div class="col-md-12">
-            <div class="block">
-                <div class="thumbnail">
-                  <div class="caption">
-                    <p>Welcome to the site of the SIDE Research Group at the Federal Institute of Education, Science
-                     and Technology of Paraiba (IFPB), Brazil.
-                   </p>
-                   <p>SIDE hosts students and professors doing research in computer information management systems,
-                      with particular emphasis on databases and information systems in distributed environments. Related
-                      issues are: semantics usage, distributed data environments (e.g., Web), semantic web, data
-                      integration, big data solutions development, data mining, data visualization, data and information
-                      quality, NoSQL systems, and others.
-                  </p>
-              </div>
-          </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/membros">Membros</a></li>
+            <li><a href="/projetos">Projetos</a></li>
+            <li><a href="/sobre">Sobre</a></li>
+            <li><a href="/contato">Contato</a></li>
+          </ul>
+        </div><!--/.navbar-collapse -->
       </div>
+    </div>
+    <div class="mini-menu">
+      <label>
+        <select class="selectnav" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+          <option value="/" selected="">Home</option>
+          <option value="/membros">Membros</option>
+          <option value="/projetos">Projetos</option>
+          <option value="/sobre">Sobre</option>
+          <option value="contato">Contato</option>
+        </select>
+      </label>
+    </div>
   </div>
-</div>
 
-<div class="row grupos">
-          <div class="caption">
-              <div class="col-md-12">
-                <h1>Linhas de pesquisa</h1>
-              </div>
-              <div class="col-md-12">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Cadastrar linha de pesquisa</button>
-              </div>
-            <div class="row">
-              <%for (var i = 0; i < tasks.length; i++){  %>
-              <div class="col-md-6">
-                  <div class="block">
-                      <div class="thumbnail linhas-block">
-                          <div class="caption">
-                              <p class=><%= tasks[i].nome %> </p>
-                              <a href="/delete-linha/<%= tasks[i]._id%>" class="btn btn-primary">Deletar</a>
-                          </div>
-                      </div>
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="banner">
+      <div id="carousel-example-generic" class="carousel slide">
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+              <div class="item active">
+                  <img src="img/banner-image.jpg" alt="Grupo de pesquisa" class="centered-image">
+                  <div class="carousel-caption">
                   </div>
               </div>
-              <% } %>
-            </div>
-          </div>
-        </div>
-    </div>
-    <div class="ruler"></div>
-</div>
-<div class="footer-wrapper">
-    <div class="site-content">
-        <div class="container">
-            <div class="row">
-
-
-            </div>
-        </div>
-    </div>
-    <div class="copy-rights">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-6">
-
-                </div>
-                <div class="col-md-6">
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal form
-================================================== -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title" id="exampleModalLabel">Cadastrar linha de pesquisa</h1>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
-      <form action="add-linha" method="POST">
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="recipient-name" class="form-control-label">Descrição:</label>
-            <input type="text" class="form-control" id="recipient-name" name="nome">
+  </div>
+  </div>
+  <div class="container">
+      <div class="featured-block">
+        <div class="row">
+          <div class="caption">
+          <h1>Semantics In Data Environments</h1>
           </div>
+          <div class="col-md-12">
+              <div class="block">
+                  <div class="thumbnail">
+                    <div class="caption">
+                      <p>Bem vindo ao site do Grupo de Pesquisa Semantics in Data Environments (SIDE) do
+                        Instituto Federal de Educação, Ciência e Tecnologia da Paraíba, Brasil.
+                     </p>
+                     <p>O grupo SIDE compreende docentes, discentes e técnicos que realizam projetos de pesquisa e/ou
+                        extensão voltados a soluções de problemas que envolvem o gerenciamento de dados.  O grupo trabalha
+                        e desenvolve soluções relacionadas aos seguintes temas: uso de semântica em ambientes de dados, aplicações
+                        web, ambientes de dados distribuídos (por exemplo, Web), web semântica, integração de dados, big data,
+                        linked data, open data, mineração de dados, visualização de dados, qualidade de dados e informações, sistemas NoSQL, entre outros.
+                    </p>
+                </div>
+            </div>
         </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Send message</button>
-        </form>
+    </div>
+  </div>
+
+  <div class="row grupos">
+            <div class="caption">
+                <div class="col-md-12">
+                  <h1>Linhas de pesquisa</h1>
+                </div>
+                <div class="col-md-12">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Cadastrar linha de pesquisa</button>
+                </div>
+              <div class="row">
+                <%for (var i = 0; i < tasks.length; i++){  %>
+                <div class="col-md-6">
+                    <div class="block">
+                        <div class="thumbnail linhas-block">
+                            <div class="caption">
+                                <p class=><%= tasks[i].nome %> </p>
+                                <a href="/delete-linha/<%= tasks[i]._id%>" class="btn btn-primary">Deletar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="ruler"></div>
+  </div>
+  <div class="footer-wrapper">
+      <div class="site-content">
+          <div class="container">
+              <div class="row">
+
+
+              </div>
+          </div>
+      </div>
+      <div class="copy-rights">
+          <div class="container">
+              <div class="row">
+
+                  <div class="col-md-6">
+
+                  </div>
+                  <div class="col-md-6">
+
+                  </div>
+
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Modal form
+  ================================================== -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title" id="exampleModalLabel">Cadastrar linha de pesquisa</h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="add-linha" method="POST">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="recipient-name" class="form-control-label">Descrição:</label>
+              <input type="text" class="form-control" id="recipient-name" name="nome">
+            </div>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="submit" class="btn btn-primary">Cadastrar</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="js/jquery-1.9.1.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="js/jquery-1.9.1.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
-</body>
-</html>
+  </body>
+  </html>

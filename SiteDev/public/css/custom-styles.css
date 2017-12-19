@@ -152,7 +152,7 @@ p{padding-bottom: 25px; margin: 0;}
 /************************************************
 	generic styles starts here
  ************************************************/
-.featured-block{padding:55px 0; overflow: hidden;}
+.featured-block{padding:15px 0; overflow: hidden;}
 .featured-block .block{margin-top: 2%;}
 .featured-block .block .thumbnail{box-shadow: 0 3px 3px 0 #e0e0e0;}
 .featured-block .caption{padding: 25px 15px;}
@@ -264,6 +264,7 @@ margin-top: 10px;
 .centered-image{margin: 0px auto; margin-bottom:5px ;}
 .hidden{visibility: hidden;}
 .featured-block .caption .project-title{font-size: 25px; line-height: 20px;color: #37d2ab;font-family: "Times New Roman", Times, serif;  padding-bottom: 10px; letter-spacing: 1px;}
+.featured-block .caption h2{font-size: 20px; line-height: 24px;color: #34b091; text-transform: uppercase;font-family: 'source_sans_probold';  padding-bottom: 10px; letter-spacing: 1px;}
 @media (max-width: 768px){.featured-block .block img.profile-image{width: 150px !important; height: 150px !important;} }
 
 /************************************************

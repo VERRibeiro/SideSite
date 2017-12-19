@@ -198,6 +198,13 @@ router.get('/login', function(req, res, next) {
   res.render('login');
 });
 
+router.get('/sobre', function(req, res, next) {
+  res.render('sobre');
+});
+
+router.get('/contato', function(req, res, next) {
+  res.render('contato');
+});
 router.post('/login',
   passport.authenticate('local', { successRedirect: '/',failureRedirect: '/login' }),
   function(req, res) {
