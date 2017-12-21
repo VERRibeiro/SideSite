@@ -35,6 +35,16 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash());
+
+// Global Vars
+app.use(function (req, res, next) {  
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  res.locals.loggedUser = req.user || null;
+  next();
+});
 app.use('/', index);
 app.use('/users', users);
 
@@ -78,14 +88,4 @@ app.use(expressValidator({
 
 }));
 
-app.use(flash());
-
-// Global Vars
-app.use(function (req, res, next) {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
-  res.locals.user = req.user || null;
-  next();
-});
 module.exports = app;

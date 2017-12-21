@@ -24,11 +24,6 @@
     <script src="js/jquery.mobilemenu.js"></script>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('.menu').mobileMenu(ff);
-        });
-    </script>
 
 </head>
 
@@ -71,18 +66,12 @@
 </div>
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="banner">
-    <div id="carousel-example-generic" class="carousel slide">
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-            <div class="item active">
-                <img src="img/banner-image.jpg" alt="Grupo de pesquisa" class="centered-image">
-                <div class="carousel-caption">
-                </div>
-            </div>
+<div class="container-fluid no-padding">
+  <div class="row">
+    <div class="col-md-12">
+      <img src="img/banner-image.jpg" alt="placeholder 960" class="img-responsive centered-image banner" />
     </div>
-</div>
+  </div>
 </div>
 <div class="container">
    <div class="featured-block">
@@ -92,22 +81,32 @@
                <h1>Projetos Atuais</h1>
             </div>
             <div class="col-md-12">
+              <%if(loggedUser!= undefined){%>
                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Cadastrar Projetos</button>
+              <%}%>
             </div>
             <div class="row">
                <%for (var i = 0; i < projetos.length; i++){ %>
                  <%if(projetos[i].dataFim == "undefined/undefined/"){ %>
-               <div class="col-md-12">
+               <div class="col-md-6">
                   <div class="block">
                      <div class="thumbnail linhas-block">
                         <div class="caption">
-                          <h2 class="project-title"><%=projetos[i].titulo%></h2>
-                          <h3 class="sub-title">Membros: </h3>
+                          <h2><%=projetos[i].titulo%></h2>
+                          <p class="membros-name">
+                          Membros:
                           <%for (var j = 0; j < projetos[i].membros.length; j++){ %>
-                            <h3 class="sub-title"><%=projetos[i].membros[j] %></h3>
+                            <%if(j < projetos[i].membros.length - 1){%>
+                             <%=projetos[i].membros[j]%>,
+                            <%}else{%>
+                              <%=projetos[i].membros[j]%>.
+                            <%}%>
                             <% } %>
-                            <h3 class="sub-title">Data de início: <%=projetos[i].dataInicio%></h3>
+                          </p>
+                            <h3 class="membros-name">Data de início: <%=projetos[i].dataInicio%></h3>
+                            <%if(loggedUser!= undefined){%>
                             <a href="/delete-projeto/<%=projetos[i]._id%>" class="btn btn-primary">Deletar</a>
+                            <%}%>
                         </div>
                      </div>
                   </div>
@@ -119,28 +118,36 @@
       </div>
       <div class="row grupos">
          <div class="caption">
-            <div class="col-md-12">
+            <div class="col-md-10 centered-image">
                <h1>Projetos Anteriores</h1>
             </div>
             <div class="row">
                <%for (var i = 0; i < projetos.length; i++){ %>
                  <%if(projetos[i].dataFim != "undefined/undefined/"){ %>
-               <div class="col-md-12">
-                  <div class="block">
-                     <div class="thumbnail linhas-block">
-                        <div class="caption">
-                          <h2 class="project-title"><%=projetos[i].titulo%></h2>
-                          <h3 class="sub-title">Membros: </h3>
-                          <%for (var j = 0; j < projetos[i].membros.length; j++){ %>
-                            <h3 class="sub-title"><%=projetos[i].membros[j] %></h3>
-                            <% } %>
-                            <h3 class="sub-title">Data de início: <%=projetos[i].dataInicio%></h3>
-                            <h3 class="sub-title">Data final: <%=projetos[i].dataFim%></h3>
-                            <a href="/delete-projeto/<%=projetos[i]._id%>" class="btn btn-primary">Deletar</a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+                   <div class="col-md-6">
+                      <div class="block">
+                         <div class="thumbnail linhas-block">
+                            <div class="caption">
+                              <h2><%=projetos[i].titulo%></h2>
+                              <p class="membros-name">
+                              Membros:
+                              <%for (var j = 0; j < projetos[i].membros.length; j++){ %>
+                                <%if(j < projetos[i].membros.length - 1){%>
+                                 <%=projetos[i].membros[j]%>,
+                                <%}else{%>
+                                  <%=projetos[i].membros[j]%>.
+                                <%}%>
+                                <% } %>
+                              </p>
+                                <h3 class="membros-name">Data de início: <%=projetos[i].dataInicio%></h3>
+                                <h3 class="membros-name">Data Final: <%=projetos[i].dataFim%></h3>
+                                <%if(loggedUser!= undefined){%>
+                                <a href="/delete-projeto/<%=projetos[i]._id%>" class="btn btn-primary">Deletar</a>
+                                <%}%>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
                <% } %>
                <% } %>
             </div>
@@ -181,7 +188,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title" id="exampleModalLabel">Cadastrar Membro</h1>
+        <h1 class="modal-title" id="exampleModalLabel">Cadastrar Projeto</h1>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -207,7 +214,9 @@
         </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%if(loggedUser!= undefined){%>
         <button type="submit" class="btn btn-primary">Send message</button>
+        <%}%>
         </form>
       </div>
     </div>

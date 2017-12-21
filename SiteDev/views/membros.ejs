@@ -56,18 +56,12 @@
       </div>
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="banner">
-          <div id="carousel-example-generic" class="carousel slide">
-
-              <!-- Wrapper for slides -->
-              <div class="carousel-inner">
-                  <div class="item active">
-                      <img src="img/banner-image.jpg" alt="Grupo de pesquisa" class="centered-image">
-                      <div class="carousel-caption">
-                      </div>
-                  </div>
+      <div class="container-fluid no-padding">
+        <div class="row">
+          <div class="col-md-12">
+            <img src="img/banner-image.jpg" alt="placeholder 960" class="img-responsive centered-image banner" />
           </div>
-      </div>
+        </div>
       </div>
 
       <div class="container">
@@ -78,7 +72,9 @@
                      <h1>Membros Professores</h1>
                   </div>
                   <div class="col-md-12">
+                    <%if(loggedUser!= undefined){%>
                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Cadastrar Membros</button>
+                    <%}%>
                   </div>
                   <div class="row">
                      <%for (var i = 0; i < membros.length; i++){ %>
@@ -88,9 +84,11 @@
                            <div class="thumbnail linhas-block">
                               <div class="caption">
                                 <img src="uploads/<%=membros[i].imagem%>" alt="imagem" class="img-responsive profile-image centered-image rounded-image">
-                                <h2 class="membros"><%=membros[i].nome%></h2>
-                                <h2 class="membros"><%=membros[i].titulo%></h2>
-                                <a href="/delete-membro/<%= membros[i]._id%>" class="btn btn-primary">Deletar</a>
+                                <h3 class="membros"><%=membros[i].nome%></h3>
+                                <h3 class="membros"><%=membros[i].titulo%></h3>
+                                <%if(loggedUser!= undefined){%>
+                                 <a href="/delete-membro/<%= membros[i]._id%>" class="btn btn-primary">Deletar</a>
+                                <%}%>
                               </div>
                            </div>
                         </div>
@@ -113,8 +111,11 @@
                            <div class="thumbnail linhas-block">
                               <div class="caption">
                                 <img src="uploads/<%=membros[i].imagem%>" alt="imagm" class="img-responsive profile-image centered-image rounded-image">
-                                 <h2 class="membros"><%=membros[i].nome%></h2>
-                                 <a href="/delete-membro/<%= membros[i]._id%>" class="btn btn-primary">Deletar</a>
+                                 <h3 class="membros"><%=membros[i].nome%></h3>
+                                 <h3 class="membros"><%=membros[i].titulo%></h3>
+                                 <%if(loggedUser!= undefined){%>
+                                  <a href="/delete-membro/<%= membros[i]._id%>" class="btn btn-primary">Deletar</a>
+                                 <%}%>
                               </div>
                            </div>
                         </div>
@@ -137,9 +138,11 @@
                            <div class="thumbnail linhas-block">
                               <div class="caption">
                                 <img src="uploads/<%=membros[i].imagem%>" alt="imagem" class="img-responsive profile-image centered-image rounded-image">
-                                 <h2 class="membros"><%=membros[i].nome%></h2>
-                                 <h2 class="membros"><%=membros[i].titulo%></h2>
+                                 <h3 class="membros"><%=membros[i].nome%></h3>
+                                 <h3 class="membros"><%=membros[i].titulo%></h3>
+                                 <%if(loggedUser!= undefined){%>
                                  <a href="/delete-membro/<%= membros[i]._id%>" class="btn btn-primary">Deletar</a>
+                                 <%}%>
                               </div>
                            </div>
                         </div>
@@ -201,7 +204,9 @@
               </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Send message</button>
+              <%if(loggedUser!= undefined){%>
+                <button type="submit" class="btn btn-primary">Send message</button>
+              <%}%>
               </form>
             </div>
           </div>

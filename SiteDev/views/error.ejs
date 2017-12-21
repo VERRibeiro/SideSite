@@ -1,10 +1,116 @@
+
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="utf-8">
-    <title>ERROR</title>
-  </head>
-  <body>
-    <h1>ops</h1>
-  </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Siderg</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/component.css">
+    <link rel="stylesheet" href="css/custom-styles.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+
+
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/font-awesome-ie7.css">
+
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+
+</head>
+
+<body>
+<div class="header-wrapper">
+    <div class="site-name">
+        <h1>Side</h1>
+    </div>
+</div>
+<div class="menu">
+  <div class="navbar">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <i class="fw-icon-th-list"></i>
+        </button>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/membros">Membros</a></li>
+          <li><a href="/projetos">Projetos</a></li>
+          <li><a href="/sobre">Sobre</a></li>
+          <li><a href="/contato">Contato</a></li>
+        </ul>
+      </div><!--/.navbar-collapse -->
+    </div>
+  </div>
+  <div class="mini-menu">
+    <label>
+      <select class="selectnav" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+        <option value="/">Home</option>
+        <option value="/membros">Membros</option>
+        <option value="/projetos">Projetos</option>
+        <option value="/sobre">Sobre</option>
+        <option value="/contato" selected="">Contato</option>
+      </select>
+    </label>
+  </div>
+</div>
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="container-fluid no-padding">
+  <div class="row">
+    <div class="col-md-12">
+      <img src="img/banner-image.jpg" alt="placeholder 960" class="img-responsive centered-image banner" />
+    </div>
+  </div>
+</div>
+<div class="container">
+    <div class="featured-block">
+      <h1>Algo inesperado aconteceu</h1>
+    </div>
+</div>
+<div class="footer-wrapper">
+    <div class="site-content">
+        <div class="container">
+            <div class="row">
+
+
+            </div>
+        </div>
+    </div>
+    <div class="copy-rights">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6">
+
+                </div>
+                <div class="col-md-6">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<script src="js/bootstrap.js"></script>
+<script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<script>
+  var nav = document.querySelector(".selectnav");
+  console.log(nav);
+</script>
+</body>
 </html>

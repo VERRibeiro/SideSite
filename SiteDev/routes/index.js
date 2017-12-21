@@ -51,7 +51,6 @@ function ensureAuthenticated(req, res, next){
 }
 
 passport.serializeUser(function(user, done) {
-  console.log(user);
   done(null, user.id);
 });
 
