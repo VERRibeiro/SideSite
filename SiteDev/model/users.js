@@ -38,3 +38,22 @@ module.exports.comparePassword = function(password, hash, next){
       next(null, isMatch);
   });
 }
+
+module.exports.createIfDoesntExists = () => {
+  usuario.count()
+    .then(count => {
+      if(count == 0) {
+
+      }
+      return new Promise((accept, reject) => {
+          reject('a');
+      });
+    })
+}
+
+
+function method(usuario) {
+  return new Promise((accept, reject) => {
+    if(usuarios.save(usuario)) accept()
+  });
+}
