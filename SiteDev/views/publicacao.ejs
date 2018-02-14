@@ -91,26 +91,30 @@
                     <div class="block">
                        <div class="thumbnail linhas-block">
                           <div class="caption">
-                            <h2><%publicacoes[i].titulo%></h2>
-                            <h3 class="membros-name"><%publicacoes[i].ano%></h3>
+                            <h2><%=publicacoes[i].titulo%></h2>
+                            <h3 class="membros-name"><%=publicacoes[i].ano%></h3>
                             <p class="membros-name">
                               Membros:
-                              <%for (var j = 0; j < projetos[i].membros.length; j++){ %>
-                                <%if(j < projetos[i].membros.length - 1){%>
-                                 <%=projetos[i].membros[j]%>,
+                              <%for (var j = 0; j < publicacoes[i].membros.length; j++){ %>
+                                <%if(j < publicacoes[i].membros.length - 1){%>
+                                 <%=publicacoes[i].membros[j]%>,
                                 <%}else{%>
-                                  <%=projetos[i].membros[j]%>.
+                                  <%=publicacoes[i].membros[j]%>.
                                 <%}%>
                                 <% } %>
                             </p>
-                            <h3 class="membros-name"><%publicacoes[i].localPublicacao%></h3>
-                            <h3 class="membros-name"><%publicacoes[i].pdf%></h3>
+                            <h3 class="membros-name"><%=publicacoes[i].localPublicacao%></h3>
+                            <h3 class="membros-name"><%=publicacoes[i].pdf%></h3>
+                            <h3 class="membros-name"><%=publicacoes[i].issn%></h3>
+                            <h3 class="membros-name"><%=publicacoes[i].doi%></h3>
+                            <h3 class="membros-name"><%=publicacoes[i].colocacao%></h3>
                               <%if(publicacoes[i].premiado == true) {%>
                                 <h3><%publicacoes[i].colocacao%></h3>
                                 <%}%>
-                              <%if(loggedUser!= undefined){%>
-
-                              <%}%>
+                            <h3 class="membros-name"><a href="<%=publicacoes[i].pdf%>" target="_blank">PDF AQUI</a></h3>
+                            <%if(loggedUser!= undefined){%>
+                              <a href="/publicacoes/delete/<%=publicacoes[i]._id%>" class="btn btn-primary">Deletar</a>
+                            <%}%>
                           </div>
                        </div>
                     </div>
@@ -157,7 +161,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="add-linha" method="POST">
+        <form action="publicacoes/new" method="POST">
           <div class="modal-body">
             <div class="form-group">
               <label for="recipient-name" class="form-control-label">Título:</label>
@@ -168,8 +172,18 @@
               <input type="text" class="form-control" id="recipient-name" name="localPublicacao">
               <label for="recipient-name" class="form-control-label">Link do pdf:</label>
               <input type="text" class="form-control" id="recipient-name" name="pdf">
+              <label for="recipient-name" class="form-control-label">ISSN:</label>
+              <input type="text" class="form-control" id="recipient-name" name="issn">
+              <label for="recipient-name" class="form-control-label">DOI:</label>
+              <input type="text" class="form-control" id="recipient-name" name="doi">
               <label for="recipient-name" class="form-control-label">Membros</label>
-
+              <%for(var i = 0; i < membros.length; i++) { %>
+              <div class="radio">
+                 <label>
+                 <input type="checkbox" name="membros" value=<%=membros[i].nome%> /> <%= membros[i].nome%>
+                 </label>
+              </div>
+              <%}%>
               <label for="recipient-name" class="form-control-label">Colocação:</label>
               <select class="colocacao" name="colocacao" onchange="tratarColocacao(event)">
                 <option value="Primeiro Colocado">Primeiro Colocado</option>

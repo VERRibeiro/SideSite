@@ -1,9 +1,9 @@
 var db = require('./../libs/connect_db')();
 var Schema = require('mongoose').Schema;
 
-var publicacao = Schema({
+var patente = Schema({
     titulo: String,
-    autores: [String],
+    membros: [String],
     numeroRegistro: String,
     instituicaoRegistro: String,
     dataDeposito: Date,
@@ -11,6 +11,6 @@ var publicacao = Schema({
     tipo: String
 });
 
-var publicacaoes = db.model('publicacoes', publicacao);
+var patentes = db.model('patentes', patente);
 
-module.exports = publicacoes;
+module.exports = patentes;

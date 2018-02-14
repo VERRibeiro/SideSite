@@ -17,7 +17,7 @@ exports.getCreatePublicacao = (req, res) => {
 				});
 		},
 		membros: callback => {
-			membrosModel.find({})
+			Membros.find({})
   				.then(function(membros) {
   					callback(null, membros);
   				})
@@ -52,7 +52,7 @@ exports.postCreatePublicacoes = (req, res) => {
 	}
 
 	var novaPublicacao = new Publicacao({
-		'titulo': req.body.title,
+		'titulo': req.body.titulo,
 		'ano': req.body.ano,
 		'localPublicacao': req.body.localPublicacao,
 		'membros': req.body.membros,
@@ -64,7 +64,20 @@ exports.postCreatePublicacoes = (req, res) => {
 
 	novaPublicacao.save()
 		.then(saved => {
-			res.redirect('/');
+			res.redirect('/publicacao');
+		})
+		.catch(err => {
+			res.render('error');
+		});
+}
+
+exports.getDeletePublicacao = (req, res) => {
+
+	var publicacaoId = req.params.publicacaoId;
+
+	Publicacao.remove({_id: publicacaoId})
+		.then(removed => {
+			res.redirect('/publicacao');
 		})
 		.catch(err => {
 			res.render('error');
@@ -76,7 +89,7 @@ function sortPublicacoesByYear() {
 	return new Promise((accept, reject) => {
 
 		Publicacao
-			.then({})
+			.find({})
 			.sort({ano: -1})
 			.then(accept)
 			.catch(reject);

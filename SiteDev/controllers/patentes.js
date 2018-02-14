@@ -1,4 +1,6 @@
 var Patente = require('../model/patentes');
+var Membros = require('../model/membros');
+var async = require('async');
 
 
 //GET - /patentes
@@ -15,7 +17,7 @@ exports.getCreatePatente = (req, res) => {
 				});
 		},
 		membros: callback => {
-			membrosModel.find({})
+			Membros.find({})
   				.then(function(membros) {
   					callback(null, membros);
   				})
@@ -38,8 +40,7 @@ exports.getCreatePatente = (req, res) => {
 exports.postCreatePatente = (req, res) => {
 
 	var novaPatente = new Patente({
-		'titulo': req.body.titulo,
-	    'ano': req.body.ano,
+			'titulo': req.body.titulo,
 	    'autores': req.body.autores,
 	    'numeroRegistro': req.body.numeroRegistro,
 	    'instituicaoRegistro': req.body.instituicaoRegistro,
@@ -50,7 +51,20 @@ exports.postCreatePatente = (req, res) => {
 
 	novaPatente.save()
 		.then(saved => {
-			res.redirect('/');
+			res.redirect('/patentes');
+		})
+		.catch(err => {
+			res.render('error');
+		});
+}
+
+exports.getDeletePatente = (req, res) => {
+
+	var patenteId = req.params.patenteId;
+
+	Patente.remove({_id: patenteId})
+		.then(removed => {
+			res.redirect('/patentes');
 		})
 		.catch(err => {
 			res.render('error');
@@ -76,7 +90,7 @@ function sortPatentesByYear() {
 	return new Promise((accept, reject) => {
 
 		Patente
-			.then({})
+			.find({})
 			.sort({dataConcessao: -1})
 			.then(accept)
 			.catch(reject);
