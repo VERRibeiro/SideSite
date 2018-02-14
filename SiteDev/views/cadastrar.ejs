@@ -45,6 +45,8 @@
             <li><a href="/">Home</a></li>
             <li><a href="/membros">Membros</a></li>
             <li><a href="/projetos">Projetos</a></li>
+            <li><a href="/publicacao">Publicações</a></li>
+            <li><a href="/patentes">Patentes</a></li>
             <li><a href="/sobre">Sobre</a></li>
             <li><a href="/contato">Contato</a></li>
           </ul>
@@ -54,11 +56,13 @@
     <div class="mini-menu">
       <label>
         <select class="selectnav" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-          <option value="/">Home</option>
+          <option value="/" selected="">Home</option>
           <option value="/membros">Membros</option>
           <option value="/projetos">Projetos</option>
+          <option value="/publicacao">Publicações</option>
+          <option value="/patentes">Patentes</option>
           <option value="/sobre">Sobre</option>
-          <option value="/contato">Contato</option>
+          <option value="contato">Contato</option>
         </select>
       </label>
     </div>

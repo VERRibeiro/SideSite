@@ -3,6 +3,7 @@ var router = express.Router();
 var model = require('./../model/tasks')();
 var membrosModel = require('./../model/membros')();
 var projetosModel = require('./../model/projetos')();
+var publicacaoModel = require('./../model/publicacoes')();
 var usuario = require('../model/users');
 var multer = require('multer');
 var mongoose = require('mongoose');
@@ -79,6 +80,15 @@ router.post('/add-linha',(req,res,next) =>{
   });
 });
 
+router.post('/add-publicacao',(req,res,next) =>{
+  var body = req.body;
+  publicacaoModel.create(body, (err,publicacao)=>{
+    if(err)
+      throw err;
+    res.redirect('/publicacao');
+  });
+});
+
 router.get('/cadastrar',ensureAuthenticated, (req, res, next) =>{
   membrosModel.find(null, (err, membros)=>{
     if(err){
@@ -149,6 +159,8 @@ router.get('/cadastrarProjeto', function(req, res, next) {
   });
 });
 
+
+
 router.post('/add-projeto',(req,res,next) =>{
 
   var dataFimArray = req.body.dataFim.split('-');
@@ -168,16 +180,6 @@ router.post('/add-projeto',(req,res,next) =>{
     res.redirect('/projetos');
   });
 });
-
-var publicacoesCtrl = require('../controllers/publicacoes');
-
-router.get('/publicacoes', publicacoesCtrl.getCreatePublicacao);
-router.post('/publicacoes/new', publicacoesCtrl.postCreatePublicacao);
-
-var patentesCtrl = require('../controllers/patentes');
-
-router.get('/patentes', patentesCtrl.getCreatePatente);
-router.post('/patentes/new', patentesCtrl.postCreatePatente);
 
 router.get('/delete-linha/:id', function(req, res, next) {
   var id = req.params.id;
@@ -214,6 +216,17 @@ router.get('/sobre', function(req, res, next) {
 router.get('/contato', function(req, res, next) {
   res.render('contato');
 });
+
+router.get('/publicacao', function(req, res, next) {
+  publicacaoModel.find(null, (err,publicacoes) =>{
+    if(err){
+      console.log(err);
+    }else{
+      res.render('publicacao',{publicacoes: publicacoes});
+    }
+  });
+});
+
 router.post('/login',
   passport.authenticate('local', { successRedirect: '/',failureRedirect: '/login' }),
   function(req, res) {
@@ -230,7 +243,7 @@ router.post('/cadastrar', function(req, res, next) {
     if(err)
       throw err;
     else {
-      res.redirect('/');
+      res.redirect('/login');
     }
   });
 });

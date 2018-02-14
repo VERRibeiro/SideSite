@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-
     <title>Siderg</title>
-
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="css/normalize.css">
@@ -17,11 +14,10 @@
     <link rel="stylesheet" href="css/custom-styles.css">
     <link rel="stylesheet" href="css/font-awesome.css">
 
-
     <link rel="stylesheet" href="css/demo.css">
     <link rel="stylesheet" href="css/font-awesome-ie7.css">
 
-    <script src="js/jquery.mobilemenu.js"></script>
+    <script src="js/custom.js"></script>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
 
@@ -30,7 +26,7 @@
 <body>
 <div class="header-wrapper">
     <div class="site-name">
-        <h1>Side</h1>
+      <h1>Side</h1>
     </div>
 </div>
 <div class="menu">
@@ -45,8 +41,8 @@
         <ul class="nav navbar-nav">
           <li><a href="/">Home</a></li>
           <li><a href="/membros">Membros</a></li>
-          <li><a class="ativo" href="/projetos">Projetos</a></li>
-          <li><a href="/publicacao">Publicações</a></li>
+          <li><a href="/projetos">Projetos</a></li>
+          <li><a href="/publicacao" class="ativo">Publicações</a></li>
           <li><a href="/patentes">Patentes</a></li>
           <li><a href="/sobre">Sobre</a></li>
           <li><a href="/contato">Contato</a></li>
@@ -57,10 +53,10 @@
   <div class="mini-menu">
     <label>
       <select class="selectnav" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-        <option value="/" >Home</option>
+        <option value="/">Home</option>
         <option value="/membros">Membros</option>
-        <option value="/projetos" selected="">Projetos</option>
-        <option value="/publicacao">Publicações</option>
+        <option value="/projetos">Projetos</option>
+        <option value="/publicacao" selected="">Publicações</option>
         <option value="/patentes">Patentes</option>
         <option value="/sobre">Sobre</option>
         <option value="/contato">Contato</option>
@@ -68,6 +64,7 @@
     </label>
   </div>
 </div>
+
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="container-fluid no-padding">
   <div class="row">
@@ -89,70 +86,36 @@
               <%}%>
             </div>
             <div class="row">
-               <%for (var i = 0; i < projetos.length; i++){ %>
-                 <%if(projetos[i].dataFim == "undefined/undefined/"){ %>
-               <div class="col-md-6">
+              <%for (var i = 0; i < publicacoes.length; i++){ %>
+               <div class="col-md-12">
                   <div class="block">
                      <div class="thumbnail linhas-block">
                         <div class="caption">
-                          <h2><%=projetos[i].titulo%></h2>
+                          <h2><%publicacoes[i].titulo%></h2>
+                          <h3 class="membros-name"><%publicacoes[i].ano%></h3>
                           <p class="membros-name">
-                          Membros:
-                          <%for (var j = 0; j < projetos[i].membros.length; j++){ %>
-                            <%if(j < projetos[i].membros.length - 1){%>
-                             <%=projetos[i].membros[j]%>,
-                            <%}else{%>
-                              <%=projetos[i].membros[j]%>.
-                            <%}%>
-                            <% } %>
+                            Membros:
+                            <%for (var j = 0; j < projetos[i].membros.length; j++){ %>
+                              <%if(j < projetos[i].membros.length - 1){%>
+                               <%=projetos[i].membros[j]%>,
+                              <%}else{%>
+                                <%=projetos[i].membros[j]%>.
+                              <%}%>
+                              <% } %>
                           </p>
-                            <h3 class="membros-name">Data de início: <%=projetos[i].dataInicio%></h3>
+                          <h3 class="membros-name"><%publicacoes[i].localPublicacao%></h3>
+                          <h3 class="membros-name"><%publicacoes[i].pdf%></h3>
+                            <%if(publicacoes[i].premiado == true) {%>
+                              <h3><%publicacoes[i].colocacao%></h3>
+                              <%}%>
                             <%if(loggedUser!= undefined){%>
-                            <a href="/delete-projeto/<%=projetos[i]._id%>" class="btn btn-primary">Deletar</a>
+
                             <%}%>
                         </div>
                      </div>
                   </div>
                </div>
-               <% } %>
-               <% } %>
-            </div>
-         </div>
-      </div>
-      <div class="row grupos">
-         <div class="caption">
-            <div class="col-md-10 centered-image">
-               <h1>Projetos Anteriores</h1>
-            </div>
-            <div class="row">
-               <%for (var i = 0; i < projetos.length; i++){ %>
-                 <%if(projetos[i].dataFim != "undefined/undefined/"){ %>
-                   <div class="col-md-6">
-                      <div class="block">
-                         <div class="thumbnail linhas-block">
-                            <div class="caption">
-                              <h2><%=projetos[i].titulo%></h2>
-                              <p class="membros-name">
-                              Membros:
-                              <%for (var j = 0; j < projetos[i].membros.length; j++){ %>
-                                <%if(j < projetos[i].membros.length - 1){%>
-                                 <%=projetos[i].membros[j]%>,
-                                <%}else{%>
-                                  <%=projetos[i].membros[j]%>.
-                                <%}%>
-                                <% } %>
-                              </p>
-                                <h3 class="membros-name">Data de início: <%=projetos[i].dataInicio%></h3>
-                                <h3 class="membros-name">Data Final: <%=projetos[i].dataFim%></h3>
-                                <%if(loggedUser!= undefined){%>
-                                <a href="/delete-projeto/<%=projetos[i]._id%>" class="btn btn-primary">Deletar</a>
-                                <%}%>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
-               <% } %>
-               <% } %>
+               <%}%>
             </div>
          </div>
       </div>
@@ -183,56 +146,57 @@
         </div>
     </div>
 </div>
-
-
 <!-- Modal form
 ================================================== -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title" id="exampleModalLabel">Cadastrar Projeto</h1>
+        <h1 class="modal-title" id="exampleModalLabel">Cadastrar Publicação</h1>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="add-projeto" method="POST">
+      <form action="add-linha" method="POST">
         <div class="modal-body">
           <div class="form-group">
-            <label for="recipient-name" class="form-control-label">Titulo:</label>
+            <label for="recipient-name" class="form-control-label">Título:</label>
             <input type="text" class="form-control" id="recipient-name" name="titulo">
-            <label for="recipient-name" class="form-control-label">Data de início:</label>
-            <input type="date" class="form-control" id="recipient-name" name="dataInicio">
-            <label for="recipient-name" class="form-control-label">Data final:</label>
-            <input type="date" class="form-control" id="recipient-name" name="dataFim">
+            <label for="recipient-name" class="form-control-label">Ano:</label>
+            <input type="text" class="form-control" id="recipient-name" name="ano">
+            <label for="recipient-name" class="form-control-label">Local da Publicação:</label>
+            <input type="text" class="form-control" id="recipient-name" name="localPublicacao">
+            <label for="recipient-name" class="form-control-label">Link do pdf:</label>
+            <input type="text" class="form-control" id="recipient-name" name="pdf">
             <label for="recipient-name" class="form-control-label">Membros</label>
-            <%for(var i = 0; i < membros.length; i++) { %>
-            <div class="radio">
-               <label>
-               <input type="checkbox" name="membros" value=<%=membros[i].nome%> /> <%= membros[i].nome%>
-               </label>
-            </div>
-            <%}%>
+
+            <label for="recipient-name" class="form-control-label">Colocação:</label>
+            <select class="colocacao" name="colocacao" onchange="tratarColocacao(event)">
+              <option value="Primeiro Colocado">Primeiro Colocado</option>
+              <option value="Segundo Colocado">Segundo Colocado</option>
+              <option value="Terceiro Colocado">Terceiro Colocado</option>
+              <option value="-1">Não Premiado</option>
+              <option value="-2">Colocação Manual</option>
+            </select>
+            <input type="text" class="form-control element-hidden" disabled= "true" id="colocacao-manual" name="colocacao">
           </div>
         </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
         <%if(loggedUser!= undefined){%>
-        <button type="submit" class="btn btn-primary">Send message</button>
+        <button type="submit" class="btn btn-primary" >Cadastrar</button>
         <%}%>
         </form>
       </div>
     </div>
   </div>
 </div>
-
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="js/jquery-1.9.1.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-
 
 </body>
 </html>

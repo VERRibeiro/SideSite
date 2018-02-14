@@ -7,7 +7,7 @@ module.exports = () =>{
     email: String,
     titulo: String,
     tipo: String,
-    imagem: {type: String, default: 'xqdele'}    
+    imagem: {type: String, default: 'default.jpeg'}
   });
   return db.model('membros',membro);
 }
