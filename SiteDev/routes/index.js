@@ -169,6 +169,16 @@ router.post('/add-projeto',(req,res,next) =>{
   });
 });
 
+var publicacoesCtrl = require('../controllers/publicacoes');
+
+router.get('/publicacoes', publicacoesCtrl.getCreatePublicacao);
+router.post('/publicacoes/new', publicacoesCtrl.postCreatePublicacao);
+
+var patentesCtrl = require('../controllers/patentes');
+
+router.get('/patentes', patentesCtrl.getCreatePatente);
+router.post('/patentes/new', patentesCtrl.postCreatePatente);
+
 router.get('/delete-linha/:id', function(req, res, next) {
   var id = req.params.id;
   model.findByIdAndRemove(id, (err, linha) => {
