@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var model = require('./../model/tasks')();
-var membrosModel = require('./../model/membros')();
+var membrosModel = require('./../model/membros');
 var projetosModel = require('./../model/projetos')();
 var publicacaoModel = require('./../model/publicacoes')();
 var usuario = require('../model/users');
@@ -217,16 +217,6 @@ router.get('/contato', function(req, res, next) {
   res.render('contato');
 });
 
-router.get('/publicacao', function(req, res, next) {
-  publicacaoModel.find(null, (err,publicacoes) =>{
-    if(err){
-      console.log(err);
-    }else{
-      res.render('publicacao',{publicacoes: publicacoes});
-    }
-  });
-});
-
 router.post('/login',
   passport.authenticate('local', { successRedirect: '/',failureRedirect: '/login' }),
   function(req, res) {
@@ -251,5 +241,17 @@ router.post('/cadastrar', function(req, res, next) {
 router.get('/logout',function(req, res){
   req.logout();
   res.redirect('/login');
-})
+});
+
+var publicacoesCtrl = require('../controllers/publicacoes');
+var patentesCtrl = require('../controllers/patentes');
+
+router.get('/publicacao', publicacoesCtrl.getCreatePublicacao);
+router.post('/publicacoes/new', publicacoesCtrl.postCreatePublicacoes);
+router.get('/publicacoes/delete/:publicacaoId', publicacoesCtrl.getDeletePublicacao);
+
+router.get('/patentes', patentesCtrl.getCreatePatente);
+router.post('/patentes/new', patentesCtrl.postCreatePatente);
+router.get('/patentes/delete/:patenteId', patentesCtrl.getDeletePatente);
+
 module.exports = router;

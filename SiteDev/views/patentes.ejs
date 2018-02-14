@@ -56,8 +56,8 @@
         <option value="/">Home</option>
         <option value="/membros">Membros</option>
         <option value="/projetos">Projetos</option>
-        <option value="/publicacao" selected="">Publicações</option>
-        <option value="/patentes">Patentes</option>
+        <option value="/publicacao">Publicações</option>
+        <option value="/patentes" selected="">Patentes</option>
         <option value="/sobre">Sobre</option>
         <option value="/contato">Contato</option>
       </select>
@@ -78,39 +78,37 @@
       <div class="row grupos">
          <div class="caption">
             <div class="col-md-12">
-               <h1>Projetos Atuais</h1>
+               <h1>Patentes</h1>
             </div>
             <div class="col-md-12">
               <%if(loggedUser!= undefined){%>
-               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Cadastrar Projetos</button>
+               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Cadastrar Patente</button>
               <%}%>
             </div>
             <div class="row">
-              <%for (var i = 0; i < publicacoes.length; i++){ %>
+              <%for (var i = 0; i < patentes.length; i++){ %>
                <div class="col-md-12">
                   <div class="block">
                      <div class="thumbnail linhas-block">
                         <div class="caption">
-                          <h2><%publicacoes[i].titulo%></h2>
-                          <h3 class="membros-name"><%publicacoes[i].ano%></h3>
+                          <h2><%=patentes[i].titulo%></h2>
+                          <h3 class="membros-name"><%=patentes[i].instituicaoRegistro%></h3>
+                          <h3 class="membros-name"><%=patentes[i].numeroRegistro%></h3>
+                          <h3 class="membros-name"><%=patentes[i].dataDeposito%></h3>
+                          <h3 class="membros-name"><%=patentes[i].dataConcessao%></h3>
                           <p class="membros-name">
                             Membros:
-                            <%for (var j = 0; j < projetos[i].membros.length; j++){ %>
-                              <%if(j < projetos[i].membros.length - 1){%>
-                               <%=projetos[i].membros[j]%>,
+                            <%for (var j = 0; j < patentes[i].membros.length; j++){ %>
+                              <%if(j < patentes[i].membros.length - 1){%>
+                               <%=patentes[i].membros[j]%>,
                               <%}else{%>
-                                <%=projetos[i].membros[j]%>.
+                                <%=patentes[i].membros[j]%>.
                               <%}%>
                               <% } %>
                           </p>
-                          <h3 class="membros-name"><%publicacoes[i].localPublicacao%></h3>
-                          <h3 class="membros-name"><%publicacoes[i].pdf%></h3>
-                            <%if(publicacoes[i].premiado == true) {%>
-                              <h3><%publicacoes[i].colocacao%></h3>
-                              <%}%>
-                            <%if(loggedUser!= undefined){%>
-
-                            <%}%>
+                          <%if(loggedUser!= undefined){%>
+                            <a href="/patentes/delete/<%=patentes[i]._id%>" class="btn btn-primary">Deletar</a>
+                          <%}%>
                         </div>
                      </div>
                   </div>
@@ -152,39 +150,38 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title" id="exampleModalLabel">Cadastrar Publicação</h1>
+        <h1 class="modal-title" id="exampleModalLabel">Cadastrar patentes</h1>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="add-linha" method="POST">
+      <form action="patentes/new" method="POST">
         <div class="modal-body">
           <div class="form-group">
-            <label for="recipient-name" class="form-control-label">Título:</label>
+            <label for="recipient-name" class="form-control-label">Titulo:</label>
             <input type="text" class="form-control" id="recipient-name" name="titulo">
-            <label for="recipient-name" class="form-control-label">Ano:</label>
-            <input type="text" class="form-control" id="recipient-name" name="ano">
-            <label for="recipient-name" class="form-control-label">Local da Publicação:</label>
-            <input type="text" class="form-control" id="recipient-name" name="localPublicacao">
-            <label for="recipient-name" class="form-control-label">Link do pdf:</label>
-            <input type="text" class="form-control" id="recipient-name" name="pdf">
+            <label for="recipient-name" class="form-control-label">Data de Depósito:</label>
+            <input type="date" class="form-control" id="recipient-name" name="dataDeposito">
+            <label for="recipient-name" class="form-control-label">Data de Concessão:</label>
+            <input type="date" class="form-control" id="recipient-name" name="dataConcessao">
+            <label for="recipient-name" class="form-control-label">Instituição de Regitro:</label>
+            <input type="text" class="form-control" id="recipient-name" name="instituicaoRegistro">
+            <label for="recipient-name" class="form-control-label">Número de Registro:</label>
+            <input type="text" class="form-control" id="recipient-name" name="numeroRegistro">
             <label for="recipient-name" class="form-control-label">Membros</label>
-
-            <label for="recipient-name" class="form-control-label">Colocação:</label>
-            <select class="colocacao" name="colocacao" onchange="tratarColocacao(event)">
-              <option value="Primeiro Colocado">Primeiro Colocado</option>
-              <option value="Segundo Colocado">Segundo Colocado</option>
-              <option value="Terceiro Colocado">Terceiro Colocado</option>
-              <option value="-1">Não Premiado</option>
-              <option value="-2">Colocação Manual</option>
-            </select>
-            <input type="text" class="form-control element-hidden" disabled= "true" id="colocacao-manual" name="colocacao">
+            <%for(var i = 0; i < membros.length; i++) { %>
+            <div class="radio">
+               <label>
+               <input type="checkbox" name="membros" value=<%=membros[i].nome%> /> <%= membros[i].nome%>
+               </label>
+            </div>
+            <%}%>
           </div>
         </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <%if(loggedUser!= undefined){%>
-        <button type="submit" class="btn btn-primary" >Cadastrar</button>
+        <button type="submit" class="btn btn-primary">Send message</button>
         <%}%>
         </form>
       </div>
