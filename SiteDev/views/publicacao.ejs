@@ -31,7 +31,7 @@
   </div>
   <div class="menu">
     <div class="navbar">
-      <div class="container">
+      <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <i class="fw-icon-th-list"></i>
@@ -78,21 +78,23 @@
         <div class="row grupos">
            <div class="caption">
               <div class="col-md-12">
-                 <h1>Projetos Atuais</h1>
+                 <h1>Publicações</h1>
               </div>
               <div class="col-md-12">
                 <%if(loggedUser!= undefined){%>
-                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Cadastrar Projetos</button>
+                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">
+                   Cadastrar Projetos
+                 </button>
                 <%}%>
               </div>
               <div class="row">
                 <%for (var i = 0; i < publicacoes.length; i++){ %>
-                 <div class="col-md-12">
+                 <div class="col-md-6">
                     <div class="block">
                        <div class="thumbnail linhas-block">
                           <div class="caption">
                             <h2><%=publicacoes[i].titulo%></h2>
-                            <h3 class="membros-name"><%=publicacoes[i].ano%></h3>
+                            <h3 class="membros-name">Ano: <%=publicacoes[i].ano%></h3>
                             <p class="membros-name">
                               Membros:
                               <%for (var j = 0; j < publicacoes[i].membros.length; j++){ %>
@@ -103,15 +105,14 @@
                                 <%}%>
                                 <% } %>
                             </p>
-                            <h3 class="membros-name"><%=publicacoes[i].localPublicacao%></h3>
-                            <h3 class="membros-name"><%=publicacoes[i].pdf%></h3>
-                            <h3 class="membros-name"><%=publicacoes[i].issn%></h3>
-                            <h3 class="membros-name"><%=publicacoes[i].doi%></h3>
-                            <h3 class="membros-name"><%=publicacoes[i].colocacao%></h3>
-                              <%if(publicacoes[i].premiado == true) {%>
+                            <h3 class="membros-name">Local de Publicação: <%=publicacoes[i].localPublicacao%></h3>
+                            <h3 class="membros-name">ISSN: <%=publicacoes[i].issn%></h3>
+                            <h3 class="membros-name">DOI: <%=publicacoes[i].doi%></h3>
+                              <%if(publicacoes[i].premiado != "Não Premiado") {%>
+                                <h3 class="membros-name">Colocação: <%=publicacoes[i].colocacao%></h3>
                                 <h3><%publicacoes[i].colocacao%></h3>
                                 <%}%>
-                            <h3 class="membros-name"><a href="<%=publicacoes[i].pdf%>" target="_blank">PDF AQUI</a></h3>
+                            <h3 class="membros-name"><a href="<%=publicacoes[i].pdf%>" target="_blank">Download PDF</a></h3>
                             <%if(loggedUser!= undefined){%>
                               <a href="/publicacoes/delete/<%=publicacoes[i]._id%>" class="btn btn-primary">Deletar</a>
                             <%}%>
@@ -189,7 +190,7 @@
                 <option value="Primeiro Colocado">Primeiro Colocado</option>
                 <option value="Segundo Colocado">Segundo Colocado</option>
                 <option value="Terceiro Colocado">Terceiro Colocado</option>
-                <option value="-1">Não Premiado</option>
+                <option value="Não Premiado">Não Premiado</option>
                 <option value="-2">Colocação Manual</option>
               </select>
               <input type="text" class="form-control element-hidden" disabled= "true" id="colocacao-manual" name="colocacao">

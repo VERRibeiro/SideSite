@@ -11,6 +11,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var fs = require('fs');
 var async = require('async');
+var moment = require('moment');
 
 var multerConf ={
   storage : multer.diskStorage({
@@ -144,7 +145,8 @@ router.get('/projetos',(req, res, next)=>{
 
   		res.render('projetos', {
       	projetos: results.projetos,
-        membros: results.membros
+        membros: results.membros,
+        moment: moment
       });
   	});
 });
@@ -163,15 +165,7 @@ router.get('/cadastrarProjeto', function(req, res, next) {
 
 router.post('/add-projeto',(req,res,next) =>{
 
-  var dataFimArray = req.body.dataFim.split('-');
-  var dataFimString = "";
-  var dataFimString = dataFimArray[2]+'/'+dataFimArray[1]+'/'+dataFimArray[0];
-  var dataInicioArray = req.body.dataInicio.split('-');
-  var dataInicioString = "";
-  var dataInicioString = dataInicioArray[2]+'/'+dataInicioArray[1]+'/'+dataInicioArray[0];
 
-  req.body.dataFim = dataFimString;
-  req.body.dataInicio = dataInicioString;
   var body = req.body;
   console.log(body);
   projetosModel.create(body, (err,projetos)=>{

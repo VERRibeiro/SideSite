@@ -267,11 +267,16 @@ margin-top: 10px;
 .featured-block .caption .project-title{font-size: 25px; line-height: 20px;color: #37d2ab;font-family: "Times New Roman", Times, serif;  padding-bottom: 10px; letter-spacing: 1px;}
 .featured-block .caption h2{font-size: 23px; line-height: 24px;color: #34b091; text-transform: uppercase;font-family: 'source_sans_probold';  padding-bottom: 10px; letter-spacing: 1px;}
 .banner{-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75)};
-.ativo{background-color: red !important;}
+.ativo{background-color:red !important;}
 .element-hidden{display: none;}
 -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);}
 @media (max-width: 768px){.featured-block .block img.profile-image{width: 150px !important; height: 150px !important;} }
+.navbar-nav > li > .ativo{background-color: #309e82;}
+.navbar-nav > li > a:hover {
+  color: #fff;
+  background-color: #309e82;
+}
 .img-responsive{width: 100%;}
 /************************************************
     Responsive Tweaks starts here

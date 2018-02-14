@@ -31,7 +31,7 @@
 </div>
 <div class="menu">
   <div class="navbar">
-    <div class="container">
+    <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <i class="fw-icon-th-list"></i>
@@ -42,8 +42,8 @@
           <li><a href="/">Home</a></li>
           <li><a href="/membros">Membros</a></li>
           <li><a href="/projetos">Projetos</a></li>
-          <li><a href="/publicacao" class="ativo">Publicações</a></li>
-          <li><a href="/patentes">Patentes</a></li>
+          <li><a href="/publicacao">Publicações</a></li>
+          <li><a href="/patentes" class="ativo">Patentes</a></li>
           <li><a href="/sobre">Sobre</a></li>
           <li><a href="/contato">Contato</a></li>
         </ul>
@@ -87,15 +87,15 @@
             </div>
             <div class="row">
               <%for (var i = 0; i < patentes.length; i++){ %>
-               <div class="col-md-12">
+               <div class="col-md-6">
                   <div class="block">
                      <div class="thumbnail linhas-block">
                         <div class="caption">
                           <h2><%=patentes[i].titulo%></h2>
-                          <h3 class="membros-name"><%=patentes[i].instituicaoRegistro%></h3>
-                          <h3 class="membros-name"><%=patentes[i].numeroRegistro%></h3>
-                          <h3 class="membros-name"><%=patentes[i].dataDeposito%></h3>
-                          <h3 class="membros-name"><%=patentes[i].dataConcessao%></h3>
+                          <h3 class="membros-name">Instituição de Registro: <%=patentes[i].instituicaoRegistro%></h3>
+                          <h3 class="membros-name">Número de Registro: <%=patentes[i].numeroRegistro%></h3>
+                          <h3 class="membros-name">Data de Depósito: <%=moment(patentes[i].dataDeposito).format('DD/MM/YYYY')%></h3>
+                          <h3 class="membros-name">Data de Concessão: <%=moment(patentes[i].dataConcessao).format('DD/MM/YYYY')%></h3>
                           <p class="membros-name">
                             Membros:
                             <%for (var j = 0; j < patentes[i].membros.length; j++){ %>
@@ -179,9 +179,9 @@
           </div>
         </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
         <%if(loggedUser!= undefined){%>
-        <button type="submit" class="btn btn-primary">Send message</button>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
         <%}%>
         </form>
       </div>

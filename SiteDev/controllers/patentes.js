@@ -1,6 +1,7 @@
 var Patente = require('../model/patentes');
 var Membros = require('../model/membros');
 var async = require('async');
+var moment = require('moment');
 
 
 //GET - /patentes
@@ -31,7 +32,8 @@ exports.getCreatePatente = (req, res) => {
 
 		res.render('patentes', {
 			patentes: results.patentes,
-			membros: results.membros
+			membros: results.membros,
+			moment: moment
 		});
 	});
 }
@@ -41,14 +43,14 @@ exports.postCreatePatente = (req, res) => {
 
 	var novaPatente = new Patente({
 			'titulo': req.body.titulo,
-	    'autores': req.body.autores,
+	    'membros': req.body.membros,
 	    'numeroRegistro': req.body.numeroRegistro,
 	    'instituicaoRegistro': req.body.instituicaoRegistro,
 	    'dataDeposito': req.body.dataDeposito,
 	    'dataConcessao': req.body.dataConcessao,
 	    'tipo': req.body.tipo
 	});
-
+	console.log(novaPatente);
 	novaPatente.save()
 		.then(saved => {
 			res.redirect('/patentes');

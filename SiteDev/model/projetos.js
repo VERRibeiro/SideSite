@@ -4,9 +4,11 @@ module.exports = () =>{
 
   var projeto = Schema({
     titulo: String,
-    dataInicio: String,
-    dataFim: String,
-    membros:[String]
+    dataInicio: Date,
+    dataFim: Date,
+    membros:[String],
+    tipo: String,
+    financiador: String
   });
   return db.model('projetos',projeto);
 }

@@ -25,7 +25,7 @@
       </div>
       <div class="menu">
         <div class="navbar">
-          <div class="container">
+          <div class="container-fluid">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <i class="fw-icon-th-list"></i>
@@ -73,7 +73,7 @@
             <div class="row grupos">
                <div class="caption">
                   <div class="col-md-12">
-                     <h1>Membros Professores</h1>
+                     <h1>Professores</h1>
                   </div>
                   <div class="col-md-12">
                     <%if(loggedUser!= undefined){%>
@@ -105,7 +105,7 @@
             <div class="row grupos">
                <div class="caption">
                   <div class="col-md-12">
-                     <h1>Membros Alunos</h1>
+                     <h1>Alunos</h1>
                   </div>
                   <div class="row">
                      <%for (var i = 0; i < membros.length; i++){ %>
@@ -207,9 +207,9 @@
                 </div>
               </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
               <%if(loggedUser!= undefined){%>
-                <button type="submit" class="btn btn-primary">Send message</button>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
               <%}%>
               </form>
             </div>
