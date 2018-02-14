@@ -71,6 +71,19 @@ exports.postCreatePublicacoes = (req, res) => {
 		});
 }
 
+exports.postDeletePublicacao = (req, res) => {
+
+	var publicacaoId = req.body.publicacaoId;
+
+	Publicacao.remove({_id: publicacaoId})
+		.then(removedPublicacao => {
+			res.redirect('/');
+		})
+		.catch(err => {
+			res.render('error');
+		});
+}
+
 function sortPublicacoesByYear() {
 
 	return new Promise((accept, reject) => {

@@ -1,4 +1,6 @@
 var Patente = require('../model/patentes');
+var async = require('async');
+var Membros = require('../model/membros');
 
 
 //GET - /patentes
@@ -50,6 +52,19 @@ exports.postCreatePatente = (req, res) => {
 
 	novaPatente.save()
 		.then(saved => {
+			res.redirect('/');
+		})
+		.catch(err => {
+			res.render('error');
+		});
+}
+
+exports.postDeletePatente = (req, res) => {
+
+	var patenteId = req.body.patenteId;
+
+	Patente.remove({_id: patenteId})
+		.then(removedPatente => {
 			res.redirect('/');
 		})
 		.catch(err => {
