@@ -278,6 +278,8 @@ box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);}
   background-color: #309e82;
 }
 .img-responsive{width: 100%;}
+
+.row-fix { margin-right: 0px !important; }
 /************************************************
     Responsive Tweaks starts here
  ************************************************/

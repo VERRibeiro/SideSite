@@ -73,6 +73,19 @@ exports.getDeletePatente = (req, res) => {
 		});
 }
 
+exports.postDeletePatente = (req, res) => {
+
+	var patenteId = req.body.patenteId;
+
+	Patente.remove({_id: patenteId})
+		.then(removedPatente => {
+			res.redirect('/');
+		})
+		.catch(err => {
+			res.render('error');
+		});
+}
+
 //GET - /patentes
 exports.listPatentesOrderedByDataConcessao = (req, res) => {
 
