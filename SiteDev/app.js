@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
   secret: 'secret',
-  saveUnitialized: true,
+  saveUninitialized: true,
   resave: true
 }));
 app.use(passport.initialize());
