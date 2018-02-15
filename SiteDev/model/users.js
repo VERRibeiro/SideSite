@@ -2,6 +2,7 @@ var db = require('./../libs/connect_db')();
 var Schema = require('mongoose').Schema;
 var bcrypt = require('bcryptjs');
 var mongoose = require('mongoose');
+var firstUserData = require('../conf/first-user-data');
 
 var usuarioSchema = Schema({
   username:{
@@ -67,8 +68,8 @@ module.exports.createDefaultUserIfDoesntExist = function() {
       if(count === 0) {
         console.log('There\'s no registered users. Creating a default admin user...');
         newUser({
-          'username': '',
-          'password': ''
+          'username': firstUserData.username,
+          'password': firstUserData.password
         })
         .then(created => {
           console.log(`The user ${created.username} was successfully created!`);
