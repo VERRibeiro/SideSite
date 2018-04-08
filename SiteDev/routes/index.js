@@ -92,8 +92,11 @@ router.post('/add-publicacao',(req,res,next) =>{
 
 router.get('/cadastrar',ensureAuthenticated, (req, res, next) =>{
   membrosModel.find(null, (err, membros)=>{
+    console.log(req.user);
     if(err){
       console.log(err);
+    }else if(req.user.role != "root"){
+      res.redirect("error");
     }else{
       res.render('cadastrar',{membros:membros});
     }

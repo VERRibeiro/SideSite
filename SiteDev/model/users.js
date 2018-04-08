@@ -9,7 +9,8 @@ var usuarioSchema = Schema({
   type: String,
     index: true
   },
-  password: String
+  password: String,
+  role: String
 });
 
 var usuario = module.exports = mongoose.model('usuario', usuarioSchema);
@@ -43,7 +44,8 @@ module.exports.comparePassword = function(password, hash, next){
 function newUserSchema(userData) {
   return new usuario({
     'username': userData.username,
-    'password': userData.password
+    'password': userData.password,
+    'role' : userData.role
   });
 }
 
@@ -52,7 +54,7 @@ function newUser(user) {
     bcrypt.genSalt(10, function(err, salt) {
       bcrypt.hash(user.password, salt, function(err, hash) {
         user.password = hash;
-        newUserSchema(user) 
+        newUserSchema(user)
           .save()
           .then(accept)
           .catch(reject);
@@ -62,14 +64,15 @@ function newUser(user) {
 }
 
 module.exports.createDefaultUserIfDoesntExist = function() {
-  usuario
-    .count()
+
+    usuario.count()
     .then(count => {
       if(count === 0) {
         console.log('There\'s no registered users. Creating a default admin user...');
         newUser({
           'username': firstUserData.username,
-          'password': firstUserData.password
+          'password': firstUserData.password,
+          'role': firstUserData.role
         })
         .then(created => {
           console.log(`The user ${created.username} was successfully created!`);

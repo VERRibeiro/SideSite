@@ -81,7 +81,7 @@
               <div class="col-md-12">
                 <%if(loggedUser!= undefined){%>
                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">
-                   Cadastrar Projetos
+                   Cadastrar Publicação
                  </button>
                 <%}%>
               </div>
@@ -94,7 +94,7 @@
                             <h2><%=publicacoes[i].titulo%></h2>
                             <h3 class="membros-name">Ano: <%=publicacoes[i].ano%></h3>
                             <p class="membros-name">
-                              Membros:
+                              Autores:
                               <%for (var j = 0; j < publicacoes[i].membros.length; j++){ %>
                                 <%if(j < publicacoes[i].membros.length - 1){%>
                                  <%=publicacoes[i].membros[j]%>,
@@ -104,10 +104,14 @@
                                 <% } %>
                             </p>
                             <h3 class="membros-name">Local de Publicação: <%=publicacoes[i].localPublicacao%></h3>
+                            <%if(publicacoes[i].issn != ''){%>
                             <h3 class="membros-name">ISSN: <%=publicacoes[i].issn%></h3>
+                            <%}%>
+                            <%if(publicacoes[i].doi != ''){%>
                             <h3 class="membros-name">DOI: <%=publicacoes[i].doi%></h3>
+                            <%}%>
                               <%if(publicacoes[i].premiado != "Não Premiado") {%>
-                                <h3 class="membros-name">Colocação: <%=publicacoes[i].colocacao%></h3>
+                                <h3 class="membros-name">Premiação: <%=publicacoes[i].colocacao%></h3>
                                 <h3><%publicacoes[i].colocacao%></h3>
                                 <%}%>
                             <h3 class="membros-name"><a href="<%=publicacoes[i].pdf%>" target="_blank">Download PDF</a></h3>
@@ -175,7 +179,7 @@
               <input type="text" class="form-control" id="recipient-name" name="issn">
               <label for="recipient-name" class="form-control-label">DOI:</label>
               <input type="text" class="form-control" id="recipient-name" name="doi">
-              <label for="recipient-name" class="form-control-label">Membros</label>
+              <label for="recipient-name" class="form-control-label">Autores</label>
               <%for(var i = 0; i < membros.length; i++) { %>
               <div class="radio">
                  <label>
@@ -185,9 +189,9 @@
               <%}%>
               <label for="recipient-name" class="form-control-label">Colocação:</label>
               <select class="colocacao" name="colocacao" onchange="tratarColocacao(event)">
-                <option value="Primeiro Colocado">Primeiro Colocado</option>
-                <option value="Segundo Colocado">Segundo Colocado</option>
-                <option value="Terceiro Colocado">Terceiro Colocado</option>
+                <option value="Primeiro Colocado">Primeiro</option>
+                <option value="Segundo Colocado">Segundo</option>
+                <option value="Terceiro Colocado">Terceiro</option>
                 <option value="Não Premiado">Não Premiado</option>
                 <option value="-2">Colocação Manual</option>
               </select>
@@ -197,7 +201,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
           <%if(loggedUser!= undefined){%>
-          <button type="submit" class="btn btn-primary" >Cadastrar</button>
+          <button type="submit" class="btn btn-primary" onclick="tratarPostPublicacao(event)">Cadastrar</button>
           <%}%>
           </form>
         </div>
