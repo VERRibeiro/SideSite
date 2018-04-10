@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="css/demo.css">
   <link rel="stylesheet" href="css/font-awesome-ie7.css">
 
+  <script src="js/password.js"></script>
   <script src="js/html5shiv.js"></script>
   <script src="js/respond.min.js"></script>
 
@@ -79,17 +80,15 @@
 
   <div class="container">
     <div class="featured-block">
-        <form class="well form-horizontal" action="/login" method="post"  id="contact_form">
+        <form class="well form-horizontal" action="/alterar-senha" method="post"  id="contact_form">
           <fieldset>
 
             <!-- Form Name -->
-            <legend>Logged user</legend>
-            <%if(loggedUser== undefined){%>
-
+            <%if(loggedUser != undefined){%>
+            <legend>Bem-Vindo <%=user.username%></legend>
             <!-- Text input-->
 
             <div class="form-group">
-              <h2><%user.login%></h2>
               <label class="col-md-4 control-label">Nova Senha</label>
               <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
@@ -98,14 +97,33 @@
                 </div>
               </div>
             </div>
+
+            <!-- Text input-->
+
+            <div class="form-group">
+              <label class="col-md-4 control-label">Confirmar Senha</label>
+              <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input name="confirm" class="form-control" type="password">
+                </div>
+              </div>
+            </div>
               <!-- Button -->
+              <div class="form-group">
+                <label class="col-md-4 control-label"></label>
                 <div class="col-md-3">
-                  <button type="submit" class="btn btn-warning">Alterar Senha</button>
+                  <%if(user.role == "root"){%>
+                  <a href="/cadastrar" class="btn btn-warning">Cadastrar</a>
+                  <%}%>
+                </div>
+                <div class="col-md-3">
+                  <button onclick="validatePassword(event)"type="submit" class="btn btn-warning">Alterar Senha</button>
                 </div>
               </div>
               <%}else{%>
                 <div class="content">
-                  <h1>Error</h1>
+                  <h1>Sem usuario logado</h1>
                 </div>
               <%}%>
             </fieldset>

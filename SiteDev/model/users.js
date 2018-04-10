@@ -34,9 +34,11 @@ module.exports.getUsuarioById = function(id,next){
 }
 
 module.exports.comparePassword = function(password, hash, next){
+
   bcrypt.compare(password, hash, function(err, isMatch) {
     if(err)
       throw err;
+      console.log(hash); 
       next(null, isMatch);
   });
 }

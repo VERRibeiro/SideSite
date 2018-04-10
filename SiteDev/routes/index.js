@@ -12,6 +12,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var fs = require('fs');
 var async = require('async');
 var moment = require('moment');
+var bcrypt = require('bcryptjs');
 
 var multerConf ={
   storage : multer.diskStorage({
@@ -29,16 +30,16 @@ passport.use(new LocalStrategy(
     usuario.getUsuarioByUsername(username, function(err, user){
       if(err)
         throw err;
-      if(!user){
+      if(!user){ 
         return done(null, false,{message: 'Usuário anônimo'});
       }
-      usuario.comparePassword(password, user.password, function(err,isMatch){
+      bcrypt.compare(password.trim(), user.password, function(err, isMatch) {
         if(err)
-          throw err;
-        if(isMatch){
-          return done(null, user);
-        }else{
-          return done(null, false, {message: 'Senha incorreta'});
+          return done(err);
+        else if(isMatch){
+          return done(null,user);
+        }else {
+          return done(null, false, { message: 'Incorrect username.' });
         }
       });
     });
@@ -167,10 +168,7 @@ router.get('/cadastrarProjeto', function(req, res, next) {
 
 
 router.post('/add-projeto',(req,res,next) =>{
-
-
   var body = req.body;
-  console.log(body);
   projetosModel.create(body, (err,projetos)=>{
     if(err)
       throw err;
@@ -206,6 +204,23 @@ router.get('/login', function(req, res, next) {
   res.render('login');
 });
 
+router.get('/user', function(req, res, next) {
+  res.render('user', {user : req.user});
+});
+router.post('/alterar-senha', function(req, res, next){
+  var novoUsuario = req.user;
+  novoUsuario.password = novoUsuario.password.trim();
+  bcrypt.genSalt(10, function(err, salt) {
+    bcrypt.hash(novoUsuario.password, salt, function(err, hash) {
+      novoUsuario.password = hash;
+      console.log(novoUsuario.password);
+      novoUsuario.save();
+      usuario.findByIdAndUpdate(req.user._id, novoUsuario, function(callback){
+        res.redirect('/user');
+      });
+    });
+  });
+});
 router.get('/sobre', function(req, res, next) {
   res.render('sobre');
 });
@@ -215,22 +230,24 @@ router.get('/contato', function(req, res, next) {
 });
 
 router.post('/login',
-  passport.authenticate('local', { successRedirect: '/',failureRedirect: '/login' }),
+  passport.authenticate('local', { successRedirect: '/user',failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/');
   });
 router.post('/cadastrar', function(req, res, next) {
   var username = req.body.username;
   var password = req.body.password;
+  var role = req.body.role;
   var novoUsuario = new usuario({
     username: username,
-    password: password
+    password: password,
+    role : role
   });
   usuario.createUser(novoUsuario, function(err,usuario){
     if(err)
       throw err;
     else {
-      res.redirect('/login');
+      res.redirect('/user');
     }
   });
 });
