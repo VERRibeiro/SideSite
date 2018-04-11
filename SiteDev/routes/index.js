@@ -234,9 +234,10 @@ router.get('/user', function(req, res, next) {
 });
 router.post('/alterar-senha', function(req, res, next){
   var novoUsuario = req.user;
-  novoUsuario.password = novoUsuario.password.trim();
   bcrypt.genSalt(10, function(err, salt) {
-    bcrypt.hash(novoUsuario.password, salt, function(err, hash) {
+    bcrypt.hash(req.body.password, salt, function(err, hash) {
+      console.log(novoUsuario.password);
+      console.log(req.body.password);
       novoUsuario.password = hash;
       console.log(novoUsuario.password);
       novoUsuario.save();
