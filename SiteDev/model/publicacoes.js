@@ -8,6 +8,7 @@ var publicacao = Schema({
   localPublicacao: String,
   premiacao: String,
   pdf: String,
+  link: String,
   colocacao: String,
   issn: String,
   doi: String

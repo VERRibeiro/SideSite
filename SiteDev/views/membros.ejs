@@ -112,7 +112,7 @@
                         <div class="block">
                            <div class="thumbnail linhas-block">
                               <div class="caption">
-                                <img src="uploads/<%=membros[i].imagem%>" alt="imagm" class="img-responsive profile-image centered-image rounded-image">
+                                <img src="uploads/<%=membros[i].imagem%>" alt="imagem" class="img-responsive profile-image centered-image rounded-image">
                                  <h3 class="membros"><%=membros[i].nome%></h3>
                                  <h3 class="membros"><%=membros[i].titulo%></h3>
                                  <%if(loggedUser!= undefined){%>
@@ -201,7 +201,7 @@
                   <input type="radio" id="radioButton" name="tipo" value="aluno"><br>
                   <label for="recipient-name" class="form-control-label">Exmembro</label>
                   <input type="radio" id="radioButton" name="tipo" value="exmembro">
-                  <input type="file" name="imagem" id="imagem">
+                  <input type="file" name="imagem" id="imagem" accept="image/*">
                 </div>
               </div>
             <div class="modal-footer">

@@ -6,7 +6,10 @@ function validatePassword(event){
   if(senha1.value != senha2.value){
     alert("As senhas devem ser iguais");
     event.preventDefault();
+  }else if(senha1.value.trim() ==""){
+    alert("O campo senha é obrigatório");
+    event.preventDefault();
   }else {
-    confirm("Tem certeza que deseja alterar a senha?");
+    confirm("Deseja confirmar a senha?");
   }
 }

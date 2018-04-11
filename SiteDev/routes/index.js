@@ -14,6 +14,19 @@ var async = require('async');
 var moment = require('moment');
 var bcrypt = require('bcryptjs');
 
+
+var multerConfPdf ={
+  storage : multer.diskStorage({
+    destination: (req, file, cb) =>{
+      cb(null,'./public/uploads/pdfs')
+    },
+    filename:(req, file, cb)=>{
+      var ext = file.mimetype.split('/')[1];
+       cb(null, file.fieldname+'-'+Date.now() +'.'+ext);
+     }
+   }),
+};
+
 var multerConf ={
   storage : multer.diskStorage({
     destination: (req, file, cb) =>{
@@ -25,14 +38,17 @@ var multerConf ={
      }
    }),
 };
+
 passport.use(new LocalStrategy(
   function(username,password,done){
     usuario.getUsuarioByUsername(username, function(err, user){
       if(err)
         throw err;
-      if(!user){ 
+      if(!user){
         return done(null, false,{message: 'Usuário anônimo'});
       }
+      console.log(password.trim());
+      console.log(user.password);
       bcrypt.compare(password.trim(), user.password, function(err, isMatch) {
         if(err)
           return done(err);
@@ -82,25 +98,32 @@ router.post('/add-linha',(req,res,next) =>{
   });
 });
 
-router.post('/add-publicacao',(req,res,next) =>{
-  var body = req.body;
-  publicacaoModel.create(body, (err,publicacao)=>{
-    if(err)
-      throw err;
-    res.redirect('/publicacao');
-  });
-});
+// router.post('/add-publicacao',(req,res,next) =>{
+//   var body = req.body;
+//   publicacaoModel.create(body, (err,publicacao)=>{
+//     if(err)
+//       throw err;
+//     res.redirect('/publicacao');
+//   });
+// });
 
 router.get('/cadastrar',ensureAuthenticated, (req, res, next) =>{
-  membrosModel.find(null, (err, membros)=>{
-    console.log(req.user);
-    if(err){
-      console.log(err);
-    }else if(req.user.role != "root"){
-      res.redirect("error");
-    }else{
-      res.render('cadastrar',{membros:membros});
+  usuario.find(null,(err,usuarios) =>{
+    var names = [];
+    for(u of usuarios){
+      names.push(u.username);
     }
+    if(err)
+      console.log(err);
+    membrosModel.find({email: {$nin: names}}, (err, membros)=>{
+      if(err){
+        console.log(err);
+      }else if(req.user.role != "root"){
+        res.redirect("/index");
+      }else{
+        res.render('cadastrar',{membros:membros});
+      }
+    });
   });
 });
 
@@ -205,7 +228,9 @@ router.get('/login', function(req, res, next) {
 });
 
 router.get('/user', function(req, res, next) {
-  res.render('user', {user : req.user});
+  usuario.find(null,(err, usuarios)=>{
+    res.render('user', {user : req.user, usuarios : usuarios});
+  });
 });
 router.post('/alterar-senha', function(req, res, next){
   var novoUsuario = req.user;
@@ -237,7 +262,10 @@ router.post('/login',
 router.post('/cadastrar', function(req, res, next) {
   var username = req.body.username;
   var password = req.body.password;
-  var role = req.body.role;
+  var role = "default";
+  if(req.body.role != ""){
+    role = req.body.role;
+  }
   var novoUsuario = new usuario({
     username: username,
     password: password,
@@ -261,7 +289,7 @@ var publicacoesCtrl = require('../controllers/publicacoes');
 var patentesCtrl = require('../controllers/patentes');
 
 router.get('/publicacao', publicacoesCtrl.getCreatePublicacao);
-router.post('/publicacoes/new', publicacoesCtrl.postCreatePublicacoes);
+router.post('/publicacoes/new', multer(multerConfPdf).single('pdf'),publicacoesCtrl.postCreatePublicacoes);
 router.get('/publicacoes/delete/:publicacaoId', publicacoesCtrl.getDeletePublicacao);
 
 router.get('/patentes', patentesCtrl.getCreatePatente);

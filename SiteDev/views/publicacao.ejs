@@ -114,7 +114,11 @@
                                 <h3 class="membros-name">Premiação: <%=publicacoes[i].colocacao%></h3>
                                 <h3><%publicacoes[i].colocacao%></h3>
                                 <%}%>
-                            <h3 class="membros-name"><a href="<%=publicacoes[i].pdf%>" target="_blank">Download PDF</a></h3>
+                            <%if(publicacoes[i].link != ""){%>
+                            <h3 class="membros-name"><a href="<%=publicacoes[i].link%>" target="_blank">Download PDF</a></h3>
+                            <%}else if(publicacoes[i].pdf !=""){%>
+                            <h3 class="membros-name"><a href="/uploads/pdfs/<%=publicacoes[i].pdf%>" target="_blank">Download PDF</a></h3>
+                            <%}%>
                             <%if(loggedUser!= undefined){%>
                               <a href="/publicacoes/delete/<%=publicacoes[i]._id%>" class="btn btn-primary">Deletar</a>
                             <%}%>
@@ -164,7 +168,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="publicacoes/new" method="POST">
+        <form action="publicacoes/new" method="POST" enctype="multipart/form-data">
           <div class="modal-body">
             <div class="form-group">
               <label for="recipient-name" class="form-control-label">Título:</label>
@@ -173,8 +177,13 @@
               <input type="text" class="form-control" id="recipient-name" name="ano">
               <label for="recipient-name" class="form-control-label">Local da Publicação:</label>
               <input type="text" class="form-control" id="recipient-name" name="localPublicacao">
-              <label for="recipient-name" class="form-control-label">Link do pdf:</label>
-              <input type="text" class="form-control" id="recipient-name" name="pdf">
+              <label for="recipient-name" class="form-control-label">Forma de envio do pdf:</label>
+              <select class="link-pdf" name="link-pdf" onchange="tratarUpload(event)">
+                <option value="upload">Upload</option>
+                <option value="link">Link</option>
+              </select>
+              <input type="text" class="form-control element-hidden" id="recipient-name" name="link">
+              <input type="file" name="pdf" id="pdf" class="" accept="application/pdf">
               <label for="recipient-name" class="form-control-label">ISSN:</label>
               <input type="text" class="form-control" id="recipient-name" name="issn">
               <label for="recipient-name" class="form-control-label">DOI:</label>

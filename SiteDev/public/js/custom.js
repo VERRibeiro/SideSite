@@ -15,9 +15,25 @@ function tratarColocacao(event){
     colocacaoManualInput.classList.add('element-hidden');
   }
 }
-
+function tratarUpload(event){
+  var uploadSelect = event.target;
+  var selectedIndex = uploadSelect.selectedIndex;
+  var selectedOption = uploadSelect.options[selectedIndex];
+  var form = document.forms[0];
+  var linkInput = form.querySelector('input[name="link"]');
+  var pdfInput = document.getElementById('pdf');
+  console.log(linkInput);
+  if(selectedOption.value === 'link') {
+    linkInput.classList.remove('element-hidden');
+    linkInput.value = "";
+    pdfInput.classList.add('element-hidden');
+  } else {
+    pdfInput.classList.remove('element-hidden');
+    pdfInput.value = "";
+    linkInput.classList.add('element-hidden');
+  }
+}
 function tratarPostPublicacao(event){
-  console.log("AAAAAAAAA");
   var form = document.forms[0];
   var titulo = form.querySelector('input[name="titulo"]');
   var ano = form.querySelector('input[name="ano"]');

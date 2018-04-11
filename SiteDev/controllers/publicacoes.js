@@ -1,8 +1,8 @@
 var Publicacao = require('../model/publicacoes');
 var async = require('async');
 var Membros = require('../model/membros');
-
-
+var multer = require('multer');
+var fs = require('fs');
 //GET - /publicacoes
 exports.getCreatePublicacao = (req, res) => {
 
@@ -31,7 +31,7 @@ exports.getCreatePublicacao = (req, res) => {
 			return res.render('error');
 		}
 
-		console.log('getCreatePublicacao, results: ', results);
+
 
 		res.render('publicacao', {
 			publicacoes: results.publicacoes,
@@ -42,7 +42,11 @@ exports.getCreatePublicacao = (req, res) => {
 
 //POST - /publicacoes/new
 exports.postCreatePublicacoes = (req, res) => {
-
+	if(req.file){
+		req.body.pdf = req.file.filename;
+	}else {
+		req.body.pdf = "";
+	}
 	var colocacao = req.body.colocacao;
 	var premiado = true;
 
@@ -55,6 +59,8 @@ exports.postCreatePublicacoes = (req, res) => {
 		'titulo': req.body.titulo,
 		'ano': req.body.ano,
 		'localPublicacao': req.body.localPublicacao,
+		'link': req.body.link,
+		'pdf' : req.body.pdf,
 		'membros': req.body.membros,
 		'issn': req.body.issn,
 		'doi': req.body.doi,
@@ -72,16 +78,21 @@ exports.postCreatePublicacoes = (req, res) => {
 }
 
 exports.getDeletePublicacao = (req, res) => {
-
-	var publicacaoId = req.params.publicacaoId;
-
-	Publicacao.remove({_id: publicacaoId})
-		.then(removed => {
+	var id = req.params.publicacaoId;
+  Publicacao.findByIdAndRemove(id, (err, deletedPublicacao) => {
+	if(err)
+		console.log(err);
+	else if(deletedPublicacao.pdf != ""){
+		console.log("DELETOU O FILE ");
+		var path = './public/uploads/pdfs/' + deletedPublicacao.pdf;
+		console.log(path);
+		fs.unlink(path, ()=>{
 			res.redirect('/publicacao');
-		})
-		.catch(err => {
-			res.render('error');
 		});
+	}else{
+		res.redirect('/publicacao');
+	}
+});
 }
 
 exports.postDeletePublicacao = (req, res) => {
