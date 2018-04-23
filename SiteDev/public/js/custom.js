@@ -1,3 +1,20 @@
+
+function tratarNomes(){
+  const nomes = document.querySelectorAll(".autores-name");
+  var text = "";
+  var nome = "";
+  var count = 0;
+  console.log(nomes.length);
+  for(let nome of nomes){
+    text = nome.innerHTML.split(" ");
+    nome = text[text.length - 1][0] + ". " + text[0];
+    if(count == nomes.length - 1)
+      nomes[count++].innerText = nome + ". ";
+    else
+      nomes[count++].innerText = nome + ", ";
+  }
+
+}
 function tratarColocacao(event){
   var colocacaoSelect = event.target;
   var selectedIndex = colocacaoSelect.selectedIndex;

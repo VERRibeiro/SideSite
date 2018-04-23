@@ -37,7 +37,7 @@
                 <li><a class="ativo" href="/membros">Membros</a></li>
                 <li><a href="/projetos">Projetos</a></li>
                 <li><a href="/publicacao">Publicações</a></li>
-                <li><a href="/patentes">Patentes</a></li>
+                <li><a href="/patentes">Propriedade Intelectual</a></li>
                 <li><a href="/sobre">Sobre</a></li>
                 <li><a href="/contato">Contato</a></li>
               </ul>
@@ -51,7 +51,7 @@
               <option value="/membros" selected="">Membros</option>
               <option value="/projetos">Projetos</option>
               <option value="/publicacao">Publicações</option>
-              <option value="/patentes">Patentes</option>
+              <option value="/patentes">Propriedade Intelectual</option>
               <option value="/sobre">Sobre</option>
               <option value="/contato">Contato</option>
             </select>
@@ -60,11 +60,7 @@
       </div>
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="container-fluid no-padding">
-        <div class="row row-fix">
-          <img src="img/banner-image.jpg" alt="placeholder 960" class="img-responsive centered-image banner" />
-        </div>
-      </div>
+
 
       <div class="container">
          <div class="featured-block">
@@ -86,8 +82,8 @@
                            <div class="thumbnail linhas-block">
                               <div class="caption">
                                 <img src="uploads/<%=membros[i].imagem%>" alt="imagem" class="img-responsive profile-image centered-image rounded-image">
-                                <h3 class="membros"><%=membros[i].nome%></h3>
-                                <h3 class="membros"><%=membros[i].titulo%></h3>
+                                <h3 class="membros center-text"><%=membros[i].nome%></h3>
+                                <h3 class="membros center-text"><%=membros[i].titulo%></h3>
                                 <%if(loggedUser!= undefined){%>
                                  <a href="/delete-membro/<%= membros[i]._id%>" class="btn btn-primary">Deletar</a>
                                 <%}%>
@@ -113,8 +109,8 @@
                            <div class="thumbnail linhas-block">
                               <div class="caption">
                                 <img src="uploads/<%=membros[i].imagem%>" alt="imagem" class="img-responsive profile-image centered-image rounded-image">
-                                 <h3 class="membros"><%=membros[i].nome%></h3>
-                                 <h3 class="membros"><%=membros[i].titulo%></h3>
+                                 <h3 class="membros center-text"><%=membros[i].nome%></h3>
+                                 <h3 class="membros center-text"><%=membros[i].titulo%></h3>
                                  <%if(loggedUser!= undefined){%>
                                   <a href="/delete-membro/<%= membros[i]._id%>" class="btn btn-primary">Deletar</a>
                                  <%}%>
@@ -140,8 +136,8 @@
                            <div class="thumbnail linhas-block">
                               <div class="caption">
                                 <img src="uploads/<%=membros[i].imagem%>" alt="imagem" class="img-responsive profile-image centered-image rounded-image">
-                                 <h3 class="membros"><%=membros[i].nome%></h3>
-                                 <h3 class="membros"><%=membros[i].titulo%></h3>
+                                 <h3 class="membros center-text"><%=membros[i].nome%></h3>
+                                 <h3 class="membros center-text"><%=membros[i].titulo%></h3>
                                  <%if(loggedUser!= undefined){%>
                                  <a href="/delete-membro/<%= membros[i]._id%>" class="btn btn-primary">Deletar</a>
                                  <%}%>

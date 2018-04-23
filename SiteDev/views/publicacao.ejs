@@ -23,7 +23,7 @@
 
   </head>
 
-  <body>
+  <body onload="tratarNomes()">
   <div class="header-wrapper">
       <div class="site-name">
         <h1>Side</h1>
@@ -43,7 +43,7 @@
             <li><a href="/membros">Membros</a></li>
             <li><a href="/projetos">Projetos</a></li>
             <li><a href="/publicacao" class="ativo">Publicações</a></li>
-            <li><a href="/patentes">Patentes</a></li>
+            <li><a href="/patentes">Propriedade Intelectual</a></li>
             <li><a href="/sobre">Sobre</a></li>
             <li><a href="/contato">Contato</a></li>
           </ul>
@@ -57,7 +57,7 @@
           <option value="/membros">Membros</option>
           <option value="/projetos">Projetos</option>
           <option value="/publicacao" selected="">Publicações</option>
-          <option value="/patentes">Patentes</option>
+          <option value="/patentes">Propriedade Intelectual</option>
           <option value="/sobre">Sobre</option>
           <option value="/contato">Contato</option>
         </select>
@@ -65,12 +65,7 @@
     </div>
   </div>
 
-  <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="container-fluid no-padding">
-        <div class="row row-fix">
-          <img src="img/banner-image.jpg" alt="placeholder 960" class="img-responsive centered-image banner" />
-        </div>
-      </div>
+
   <div class="container">
      <div class="featured-block">
         <div class="row grupos">
@@ -87,38 +82,37 @@
               </div>
               <div class="row">
                 <%for (var i = 0; i < publicacoes.length; i++){ %>
-                 <div class="col-md-6">
+                 <div class="col-md-12">
                     <div class="block">
                        <div class="thumbnail linhas-block">
                           <div class="caption">
-                            <h2><%=publicacoes[i].titulo%></h2>
-                            <h3 class="membros-name">Ano: <%=publicacoes[i].ano%></h3>
+
                             <p class="membros-name">
-                              Autores:
                               <%for (var j = 0; j < publicacoes[i].membros.length; j++){ %>
                                 <%if(j < publicacoes[i].membros.length - 1){%>
-                                 <%=publicacoes[i].membros[j]%>,
+                                 <span class="autores-name"><%=publicacoes[i].membros[j]%>,</span>
                                 <%}else{%>
-                                  <%=publicacoes[i].membros[j]%>.
+                                  <span class="autores-name"><%=publicacoes[i].membros[j]%>.</span>
                                 <%}%>
                                 <% } %>
-                            </p>
-                            <h3 class="membros-name">Local de Publicação: <%=publicacoes[i].localPublicacao%></h3>
+                            <span><%=publicacoes[i].titulo%></span>
+                            <span><%=publicacoes[i].ano%></span>
+                            <span>Local de Publicação: <%=publicacoes[i].localPublicacao%></span>
                             <%if(publicacoes[i].issn != ''){%>
-                            <h3 class="membros-name">ISSN: <%=publicacoes[i].issn%></h3>
+                            <span>. ISSN: <%=publicacoes[i].issn%></span>
                             <%}%>
                             <%if(publicacoes[i].doi != ''){%>
-                            <h3 class="membros-name">DOI: <%=publicacoes[i].doi%></h3>
+                            <span>. DOI: <%=publicacoes[i].doi%></span>
                             <%}%>
                               <%if(publicacoes[i].premiado != "Não Premiado") {%>
-                                <h3 class="membros-name">Premiação: <%=publicacoes[i].colocacao%></h3>
-                                <h3><%publicacoes[i].colocacao%></h3>
+                                <span>. Premiação: <%=publicacoes[i].colocacao%></span>
                                 <%}%>
                             <%if(publicacoes[i].link != ""){%>
-                            <h3 class="membros-name"><a href="<%=publicacoes[i].link%>" target="_blank">Download PDF</a></h3>
+                            <span><a href="<%=publicacoes[i].link%>" target="_blank">Download PDF</a></span>
                             <%}else if(publicacoes[i].pdf !=""){%>
-                            <h3 class="membros-name"><a href="/uploads/pdfs/<%=publicacoes[i].pdf%>" target="_blank">Download PDF</a></h3>
+                            <span><a href="/uploads/pdfs/<%=publicacoes[i].pdf%>" target="_blank">Download PDF</a></span>
                             <%}%>
+                            </p>
                             <%if(loggedUser!= undefined){%>
                               <a href="/publicacoes/delete/<%=publicacoes[i]._id%>" class="btn btn-primary">Deletar</a>
                             <%}%>
@@ -192,7 +186,7 @@
               <%for(var i = 0; i < membros.length; i++) { %>
               <div class="radio">
                  <label>
-                 <input type="checkbox" name="membros" value=<%=membros[i].nome%> /> <%= membros[i].nome%>
+                 <input type="checkbox" name="membros" id="test" value="<%=membros[i].nome%>" /> <%= membros[i].nome%>
                  </label>
               </div>
               <%}%>

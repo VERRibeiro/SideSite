@@ -40,7 +40,7 @@
                         <li><a href="/membros">Membros</a></li>
                         <li><a href="/projetos">Projetos</a></li>
                         <li><a href="/publicacao">Publicações</a></li>
-                        <li><a href="/patentes" class="ativo">Patentes</a></li>
+                        <li><a href="/patentes" class="ativo">Propriedade Intelectual</a></li>
                         <li><a href="/sobre">Sobre</a></li>
                         <li><a href="/contato">Contato</a></li>
                     </ul>
@@ -55,19 +55,14 @@
                     <option value="/membros">Membros</option>
                     <option value="/projetos">Projetos</option>
                     <option value="/publicacao">Publicações</option>
-                    <option value="/patentes" selected="">Patentes</option>
+                    <option value="/patentes" selected="">Propriedade Intelectual</option>
                     <option value="/sobre">Sobre</option>
                     <option value="/contato">Contato</option>
                 </select>
             </label>
         </div>
     </div>
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="container-fluid no-padding">
-        <div class="row row-fix">
-            <img src="img/banner-image.jpg" alt="placeholder 960" class="img-responsive centered-image banner" />
-        </div>
-    </div>
+
     <div class="container">
         <div class="featured-block">
             <div class="row grupos">
@@ -161,7 +156,7 @@
                             <%for(var i = 0; i < membros.length; i++) { %>
                                 <div class="radio">
                                     <label>
-                                        <input type="checkbox" name="membros" value=<%=membros[i].nome%> />
+                                        <input type="checkbox" name="membros" value="<%=membros[i].nome%>" />
                                         <%= membros[i].nome%>
                                     </label>
                                 </div>

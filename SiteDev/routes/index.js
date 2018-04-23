@@ -47,8 +47,7 @@ passport.use(new LocalStrategy(
       if(!user){
         return done(null, false,{message: 'Usuário anônimo'});
       }
-      console.log(password.trim());
-      console.log(user.password);
+
       bcrypt.compare(password.trim(), user.password, function(err, isMatch) {
         if(err)
           return done(err);
@@ -192,6 +191,7 @@ router.get('/cadastrarProjeto', function(req, res, next) {
 
 router.post('/add-projeto',(req,res,next) =>{
   var body = req.body;
+  console.log(body);
   projetosModel.create(body, (err,projetos)=>{
     if(err)
       throw err;
