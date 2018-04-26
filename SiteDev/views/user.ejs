@@ -115,16 +115,15 @@
             </div>
               <!-- Button -->
               <div class="form-group">
-                <label class="col-md-4 control-label"></label>
-                <div class="col-md-3">
+                <div class="col-md-2">
                   <%if(user.role == "root"){%>
                   <a href="/cadastrar" class="btn btn-warning">Cadastrar</a>
                   <%}%>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                   <button onclick="validatePassword(event)"type="submit" class="btn btn-warning">Alterar Senha</button>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                   <a href="/logout" class="btn btn-warning">Logout</a>
                 </div>
               </div>
@@ -169,6 +168,6 @@
       <script src="js/bootstrap.js"></script>
       <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
-  
+
   </body>
   </html>

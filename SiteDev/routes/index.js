@@ -261,17 +261,18 @@ router.post('/login',
     res.redirect('/');
   });
 router.post('/cadastrar', function(req, res, next) {
+  console.log(req.body.username);
+  console.log(req.body.password);
+  console.log(req.body.role);
   var username = req.body.username;
   var password = req.body.password;
-  var role = "default";
-  if(req.body.role != ""){
-    role = req.body.role;
-  }
+  var role = req.body.role;
   var novoUsuario = new usuario({
     username: username,
     password: password,
     role : role
   });
+  console.log(novoUsuario);
   usuario.createUser(novoUsuario, function(err,usuario){
     if(err)
       throw err;

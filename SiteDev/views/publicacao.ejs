@@ -71,32 +71,36 @@
         <div class="row grupos">
            <div class="caption">
               <div class="col-md-12">
-                 <h1>Publicações</h1>
-              </div>
-              <div class="col-md-12">
                 <%if(loggedUser!= undefined){%>
                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">
                    Cadastrar Publicação
                  </button>
                 <%}%>
               </div>
+
               <div class="row">
                 <%for (var i = 0; i < publicacoes.length; i++){ %>
                  <div class="col-md-12">
                     <div class="block">
+                      <%if(i > 0){%>
+                      <%if(publicacoes[i].ano != publicacoes[i - 1].ano){%>
+                      <h1><%=publicacoes[i].ano%></h1>
+                      <%}%>
+                      <%}else{%>
+                        <h1><%=publicacoes[i].ano%></h1>
+                      <%}%>
                        <div class="thumbnail linhas-block">
                           <div class="caption">
 
                             <p class="membros-name">
                               <%for (var j = 0; j < publicacoes[i].membros.length; j++){ %>
                                 <%if(j < publicacoes[i].membros.length - 1){%>
-                                 <span class="autores-name"><%=publicacoes[i].membros[j]%>,</span>
+                                 <span class="autores-name"><%=publicacoes[i].membros[j]%>;</span>
                                 <%}else{%>
                                   <span class="autores-name"><%=publicacoes[i].membros[j]%>.</span>
                                 <%}%>
                                 <% } %>
                             <span><%=publicacoes[i].titulo%></span>
-                            <span><%=publicacoes[i].ano%></span>
                             <span>Local de Publicação: <%=publicacoes[i].localPublicacao%></span>
                             <%if(publicacoes[i].issn != ''){%>
                             <span>. ISSN: <%=publicacoes[i].issn%></span>
@@ -104,7 +108,8 @@
                             <%if(publicacoes[i].doi != ''){%>
                             <span>. DOI: <%=publicacoes[i].doi%></span>
                             <%}%>
-                              <%if(publicacoes[i].premiado != "Não Premiado") {%>
+                            <span class="ano">(<%=publicacoes[i].ano%>)</span>
+                              <%if(publicacoes[i].colocacao != "Não Premiado") {%>
                                 <span>. Premiação: <%=publicacoes[i].colocacao%></span>
                                 <%}%>
                             <%if(publicacoes[i].link != ""){%>

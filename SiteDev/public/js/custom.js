@@ -13,7 +13,6 @@ function tratarNomes(){
     else
       nomes[count++].innerText = nome + ", ";
   }
-
 }
 function tratarColocacao(event){
   var colocacaoSelect = event.target;
