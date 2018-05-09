@@ -94,14 +94,14 @@ p{padding-bottom: 25px; margin: 0;}
 .site-name{display: inline-block;}
 .site-name h1{margin: 0; font-size: 44px; color: #34b091; font-family: 'source_sans_probold'; text-transform: uppercase; letter-spacing: 2px;}
 .site-name h2{font-size: 18px; line-height: 24px; color: #676767; font-family: 'source_sans_prolight';}
-.menu{text-align: center; background: #34b091; height: 52px;}
+.menu{text-align: center; background: #006482; height: 52px;}
 .navbar{display: inline-block; margin-bottom: 0;}
 
 .navbar-nav > li > a{color: #fff; font-size: 16px; background-image: none; border: none; font-family: 'source_sans_probold'; text-transform: uppercase; padding: 15px 0px; padding-right: 20px;padding-left: 20px;}
 .navbar-nav > li > a:hover{color: #888888; background: none;}
 
 .mini-menu{display: none;}
-    .mini-menu .selectnav{display: none; width: 100%;background: #3b3e4a;font-weight: 600;padding: 10px;height: 42px; color: #fff; border-radius: 5px; cursor: pointer; outline: 0; border:none !important;}
+    .mini-menu .selectnav{display: none; width: 100%;background: #006482;font-weight: 600;padding: 10px;height: 42px; color: #fff; border-radius: 5px; cursor: pointer; outline: 0; border:none !important;}
     .selectnav select{appearance: none; border:none !important;}
     .mini-menu label {position:relative; width: 100%;}
     .mini-menu label:after {
@@ -156,9 +156,9 @@ p{padding-bottom: 25px; margin: 0;}
 .featured-block .block{margin-top: 2%;}
 .featured-block .block .thumbnail{box-shadow: 0 3px 3px 0 #e0e0e0;}
 .featured-block .caption{padding: 25px 15px;}
-.featured-block .caption h1{font-size: 25px; line-height: 24px;color: #34b091; text-transform: uppercase;font-family: 'source_sans_probold';  padding-bottom: 10px; letter-spacing: 1px;}
+.featured-block .caption h1{font-size: 25px; line-height: 24px;color: #006482; text-transform: uppercase;font-family: 'source_sans_probold';  padding-bottom: 10px; letter-spacing: 1px;}
 .featured-block .caption p{font-size: 20px; line-height: 24px;color: #32544e;font-family: "Times New Roman", Times, serif;  padding-bottom: 10px; letter-spacing: 1px;}
-.featured-block .caption .btn{color: #fff; background: #34b091; font-size: 12px; font-family: 'source_sans_problack'; border-radius: 30px; text-transform: uppercase; line-height: 13px;}
+.featured-block .caption .btn{color: #fff; background: #006482; font-size: 12px; font-family: 'source_sans_problack'; border-radius: 30px; text-transform: uppercase; line-height: 13px;}
 .featured-block .caption .btn:hover{color: #fff; background: #454855; transition:all 1s;}
 
 
@@ -242,7 +242,7 @@ margin-top: 10px;
 .site-content .block .input-group {margin-top: 10px;}
 .site-content .block .input-group-btn .btn{border-radius: 0 20px 20px 0; background: #34b091; color: #fff; font-family: 'source_sans_problack'; text-transform: uppercase; border: none; padding: 6px 5px; font-size: 12px; line-height: 23px;}
 .site-content .block .input-group-btn .btn:hover{background: #454855; color: #34b091; transition:all 1s;}
-.input-group .form-control {border-radius: 19px;background: #97ff91; border: none;}
+.input-group .form-control {border-radius: 19px;background: #46D7FF; border: none;}
 .site-content .block .social li a{text-decoration: none; border-bottom: 0;}
 .site-content .block .social{margin-top: 8px;}
 .social [class^="fw-icon-"]{font-size: 18px; width: 40px; height: 40px;
@@ -257,15 +257,15 @@ margin-top: 10px;
 .featured-block .block .linhas-block{height: 25;}
 .featured-block .caption .linhas{font-size: 20px;}
 .modal-title{font-size: 23px; line-height: 24px;color: #34b091; text-transform: uppercase;font-family: 'source_sans_probold';  padding-bottom: 10px; letter-spacing: 1px;}
-.featured-block .caption .membros{font-size: 20px; line-height: 20px;color: #3f9887;font-family: "Times New Roman", Times, serif; padding-bottom: 10px;padding-top: 10px;letter-spacing: 1px;}
+.featured-block .caption .membros{font-size: 20px; line-height: 20px;color: #006482;font-family: "Times New Roman", Times, serif; padding-bottom: 10px;padding-top: 10px;letter-spacing: 1px;}
 .featured-block .caption .sub-title{font-size: 20px; line-height: 20px;color: #3f9887;font-family: "Times New Roman", Times, serif;  padding-bottom: 10px; letter-spacing: 1px;}
-.featured-block .caption .membros-name{font-size: 18px; line-height: 20px;color: #3f9887;font-family: "Times New Roman", Times, serif;  padding-bottom: 10px; letter-spacing: 1px;}
+.featured-block .caption .membros-name{font-size: 18px; line-height: 20px;color: #006482;font-family: "Times New Roman", Times, serif;  padding-bottom: 10px; letter-spacing: 1px;}
 .profile-image{width: 128px !important; height: 128px !important;}
 .rounded-image{border-radius: 50%;}
 .centered-image{margin: 0px auto; margin-bottom:5px ;}
 .hidden{visibility: hidden;}
 .featured-block .caption .project-title{font-size: 25px; line-height: 20px;color: #37d2ab;font-family: "Times New Roman", Times, serif;  padding-bottom: 10px; letter-spacing: 1px;}
-.featured-block .caption h2{font-size: 23px; line-height: 24px;color: #34b091; text-transform: uppercase;font-family: 'source_sans_probold';  padding-bottom: 10px; letter-spacing: 1px;}
+.featured-block .caption h2{font-size: 23px; line-height: 24px;color: #006482; text-transform: uppercase;font-family: 'source_sans_probold';  padding-bottom: 10px; letter-spacing: 1px;}
 .banner{-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75)};
 .ativo{background-color:red !important;}
 .element-hidden{display: none !important;}
@@ -281,8 +281,9 @@ box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);}
 }
 .center-text{text-align: center;}
 .img-responsive{width: 100%;}
-
+.logo{width: 20%;}
 .row-fix { margin-right: 0px !important; }
+
 /************************************************
     Responsive Tweaks starts here
  ************************************************/
