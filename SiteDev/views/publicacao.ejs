@@ -1,241 +1,226 @@
 <!DOCTYPE html>
- <html lang="en">
- <head>
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <meta name="description" content="">
-     <meta name="author" content="">
+  <html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="">
+      <meta name="author" content="">
 
-     <title>Siderg</title>
-     <!-- Bootstrap core CSS -->
-     <link href="css/bootstrap.css" rel="stylesheet">
-     <link rel="stylesheet" href="css/normalize.css">
-     <link rel="stylesheet" href="css/component.css">
-     <link rel="stylesheet" href="css/custom-styles.css">
-     <link rel="stylesheet" href="css/font-awesome.css">
+      <title>Siderg</title>
+      <!-- Bootstrap core CSS -->
+      <link href="css/bootstrap.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/normalize.css">
+      <link rel="stylesheet" href="css/component.css">
+      <link rel="stylesheet" href="css/custom-styles.css">
+      <link rel="stylesheet" href="css/font-awesome.css">
 
-     <link rel="stylesheet" href="css/demo.css">
-     <link rel="stylesheet" href="css/font-awesome-ie7.css">
+      <link rel="stylesheet" href="css/demo.css">
+      <link rel="stylesheet" href="css/font-awesome-ie7.css">
 
-     <script src="js/custom.js"></script>
-     <script src="js/html5shiv.js"></script>
-     <script src="js/respond.min.js"></script>
+      <script src="js/custom.js"></script>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
 
- </head>
+  </head>
 
- <body onload="tratarNomes()">
- <div class="header-wrapper">
-     <div class="site-name">
-       <h1>Side</h1>
-     </div>
- </div>
- <div class="menu">
-   <div class="navbar">
-     <div class="container-fluid">
-       <div class="navbar-header">
-         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-           <i class="fw-icon-th-list"></i>
-         </button>
-       </div>
-       <div class="navbar-collapse collapse">
-         <ul class="nav navbar-nav">
-           <li><a href="/">Home</a></li>
-           <li><a href="/membros">Membros</a></li>
-           <li><a href="/projetos">Projetos</a></li>
-           <li><a href="/publicacao" class="ativo">Publicações</a></li>
-           <li><a href="/patentes">Propriedade Intelectual</a></li>
-           <li><a href="/sobre">Sobre</a></li>
-           <li><a href="/contato">Contato</a></li>
-         </ul>
-       </div><!--/.navbar-collapse -->
-     </div>
-   </div>
-   <div class="mini-menu">
-     <label>
-       <select class="selectnav" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-         <option value="/">Home</option>
-         <option value="/membros">Membros</option>
-         <option value="/projetos">Projetos</option>
-         <option value="/publicacao" selected="">Publicações</option>
-         <option value="/patentes">Propriedade Intelectual</option>
-         <option value="/sobre">Sobre</option>
-         <option value="/contato">Contato</option>
-       </select>
-     </label>
-   </div>
- </div>
+  <body onload="tratarNomes()">
+    <div class="header-wrapper">
+        <div class="site-name">
+            <img src="img/logo-nova.png" alt="logo do grupo de pesquisa Side" class="logo">
+        </div>
+    </div>
+  <div class="menu">
+    <div class="navbar">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <i class="fw-icon-th-list"></i>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/membros">Membros</a></li>
+            <li><a href="/projetos">Projetos</a></li>
+            <li><a href="/publicacao" class="ativo">Publicações</a></li>
+            <li><a href="/patentes">Propriedade Intelectual</a></li>
+            <li><a href="/sobre">Sobre</a></li>
+            <li><a href="/contato">Contato</a></li>
+          </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+    <div class="mini-menu">
+      <label>
+        <select class="selectnav" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+          <option value="/">Home</option>
+          <option value="/membros">Membros</option>
+          <option value="/projetos">Projetos</option>
+          <option value="/publicacao" selected="">Publicações</option>
+          <option value="/patentes">Propriedade Intelectual</option>
+          <option value="/sobre">Sobre</option>
+          <option value="/contato">Contato</option>
+        </select>
+      </label>
+    </div>
+  </div>
 
 
- <div class="container">
-    <div class="featured-block">
-       <div class="row grupos">
-          <div class="caption">
-             <div class="col-md-12">
-               <%if(loggedUser!= undefined){%>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">
-                  Cadastrar Publicação
-                </button>
-               <%}%>
-             </div>
+  <div class="container">
+     <div class="featured-block">
+        <div class="row grupos">
+           <div class="caption">
+              <div class="col-md-12">
+                <%if(loggedUser!= undefined){%>
+                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">
+                   Cadastrar Publicação
+                 </button>
+                <%}%>
+              </div>
 
-             <div class="row">
-               <%for (var i = 0; i < publicacoes.length; i++){ %>
-                     <%if(i > 0){%>
-                     <%if(publicacoes[i].ano != publicacoes[i - 1].ano){%>
-                       <div class="col-md-12">
-                          <div class="block">
-                     <h1><%=publicacoes[i].ano%></h1>
-                     <div class="thumbnail linhas-block">
-                        <div class="caption">
-                          <%}%>
-                     <%}else{%>
-                       <div class="col-md-12">
-                          <div class="block">
-                       <h1><%=publicacoes[i].ano%></h1>
-                       <div class="thumbnail linhas-block">
-                          <div class="caption">
-                     <%}%>
-
-                           <p class="membros-name publicacao">
-                             <%for (var j = 0; j < publicacoes[i].membros.length; j++){ %>
-                               <%if(j < publicacoes[i].membros.length - 1){%>
-                                <span class="autores-name"><%=publicacoes[i].membros[j]%>;</span>
-                               <%}else{%>
-                                 <span class="autores-name"><%=publicacoes[i].membros[j]%>.</span>
-                               <%}%>
-                               <% } %>
-                           <span><%=publicacoes[i].titulo%></span>
-                           <span>Local de Publicação: <%=publicacoes[i].localPublicacao%></span>
-                           <%if(publicacoes[i].issn != ''){%>
-                           <span>. ISSN: <%=publicacoes[i].issn%></span>
-                           <%}%>
-                           <%if(publicacoes[i].doi != ''){%>
-                           <span>. DOI: <%=publicacoes[i].doi%></span>
-                           <%}%>
-                           <span class="ano">(<%=publicacoes[i].ano%>)</span>
-                             <%if(publicacoes[i].colocacao != "Não Premiado") {%>
-                               <span>. Premiação: <%=publicacoes[i].colocacao%></span>
-                               <%}%>
-                           <%if(publicacoes[i].link != ""){%>
-                           <span><a href="<%=publicacoes[i].link%>" target="_blank">Download PDF</a></span>
-                           <%}else if(publicacoes[i].pdf !=""){%>
-                           <span><a href="/uploads/pdfs/<%=publicacoes[i].pdf%>" target="_blank">Download PDF</a></span>
-                           <%}%>
-                           </p>
-                           <%if(loggedUser!= undefined){%>
-                             <a href="/publicacoes/delete/<%=publicacoes[i]._id%>" class="btn btn-primary">Deletar</a>
-                           <%}%>
-                           <%if(i < publicacoes.length - 1){%>
-                           <%if(publicacoes[i].ano != publicacoes[i + 1].ano){%>
-                         </div>
-                      </div>
-                    </div>
-                  </div>
+              <div class="row">
+                <%for (var i = 0; i < publicacoes.length; i++){ %>
+                 <div class="col-md-12">
+                    <div class="block">
+                      <%if(i > 0){%>
+                      <%if(publicacoes[i].ano != publicacoes[i - 1].ano){%>
+                      <h1><%=publicacoes[i].ano%></h1>
                       <%}%>
                       <%}else{%>
-                      </div>
+                        <h1><%=publicacoes[i].ano%></h1>
+                      <%}%>
+                       <div class="thumbnail linhas-block">
+                          <div class="caption">
+                            <p class="membros-name">
+                              <%for (var j = 0; j < publicacoes[i].membros.length; j++){ %>
+                                <%if(j < publicacoes[i].membros.length - 1){%>
+                                 <span class="autores-name"><%=publicacoes[i].membros[j]%>;</span>
+                                <%}else{%>
+                                  <span class="autores-name"><%=publicacoes[i].membros[j]%>.</span>
+                                <%}%>
+                                <% } %>
+                            <span><%=publicacoes[i].titulo%></span>
+                            <span>Local de Publicação: <%=publicacoes[i].localPublicacao%></span>
+                            <%if(publicacoes[i].issn != ''){%>
+                            <span>. ISSN: <%=publicacoes[i].issn%></span>
+                            <%}%>
+                            <%if(publicacoes[i].doi != ''){%>
+                            <span>. DOI: <%=publicacoes[i].doi%></span>
+                            <%}%>
+                            <span class="ano">(<%=publicacoes[i].ano%>)</span>
+                              <%if(publicacoes[i].colocacao != "Não Premiado") {%>
+                                <span>. Premiação: <%=publicacoes[i].colocacao%></span>
+                                <%}%>
+                            <%if(publicacoes[i].link != ""){%>
+                            <span><a href="<%=publicacoes[i].link%>" target="_blank">Download PDF</a></span>
+                            <%}else if(publicacoes[i].pdf !=""){%>
+                            <span><a href="/uploads/pdfs/<%=publicacoes[i].pdf%>" target="_blank">Download PDF</a></span>
+                            <%}%>
+                            </p>
+                            <%if(loggedUser!= undefined){%>
+                              <a href="/publicacoes/delete/<%=publicacoes[i]._id%>" class="btn btn-primary">Deletar</a>
+                            <%}%>
+                          </div>
+                       </div>
                     </div>
-                  </div>
-               </div>
-                    <%}%>
-
-                <%}%>
-             </div>
-          </div>
-       </div>
-    </div>
-    <div class="ruler"></div>
- </div>
- <div class="footer-wrapper">
-     <div class="site-content">
-         <div class="container">
-             <div class="row">
-
-
-             </div>
-         </div>
-     </div>
-     <div class="copy-rights">
-         <div class="container">
-             <div class="row">
-
-                 <div class="col-md-6">
-
                  </div>
-                 <div class="col-md-6">
-
-                 </div>
-
-             </div>
-         </div>
-     </div>
- </div>
- <!-- Modal form
- ================================================== -->
- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-   <div class="modal-dialog" role="document">
-     <div class="modal-content">
-       <div class="modal-header">
-         <h1 class="modal-title" id="exampleModalLabel">Cadastrar Publicação</h1>
-         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-           <span aria-hidden="true">&times;</span>
-         </button>
-       </div>
-       <form action="publicacoes/new" method="POST" enctype="multipart/form-data">
-         <div class="modal-body">
-           <div class="form-group">
-             <label for="recipient-name" class="form-control-label">Título:</label>
-             <input type="text" class="form-control" id="recipient-name" name="titulo">
-             <label for="recipient-name" class="form-control-label">Ano:</label>
-             <input type="text" class="form-control" id="recipient-name" name="ano">
-             <label for="recipient-name" class="form-control-label">Local da Publicação:</label>
-             <input type="text" class="form-control" id="recipient-name" name="localPublicacao">
-             <label for="recipient-name" class="form-control-label">Forma de envio do pdf:</label>
-             <select class="link-pdf" name="link-pdf" onchange="tratarUpload(event)">
-               <option value="upload">Upload</option>
-               <option value="link">Link</option>
-             </select>
-             <input type="text" class="form-control element-hidden" id="recipient-name" name="link">
-             <input type="file" name="pdf" id="pdf" class="" accept="application/pdf">
-             <label for="recipient-name" class="form-control-label">ISSN:</label>
-             <input type="text" class="form-control" id="recipient-name" name="issn">
-             <label for="recipient-name" class="form-control-label">DOI:</label>
-             <input type="text" class="form-control" id="recipient-name" name="doi">
-             <label for="recipient-name" class="form-control-label">Autores</label>
-             <%for(var i = 0; i < membros.length; i++) { %>
-             <div class="radio">
-                <label>
-                <input type="checkbox" name="membros" id="test" value="<%=membros[i].nome%>" /> <%= membros[i].nome%>
-                </label>
-             </div>
-             <%}%>
-             <label for="recipient-name" class="form-control-label">Colocação:</label>
-             <select class="colocacao" name="colocacao" onchange="tratarColocacao(event)">
-               <option value="Primeiro Colocado">Primeiro</option>
-               <option value="Segundo Colocado">Segundo</option>
-               <option value="Terceiro Colocado">Terceiro</option>
-               <option value="Não Premiado">Não Premiado</option>
-               <option value="-2">Colocação Manual</option>
-             </select>
-             <input type="text" class="form-control element-hidden" disabled= "true" id="colocacao-manual" name="colocacao">
+                 <%}%>
+              </div>
            </div>
-         </div>
-       <div class="modal-footer">
-         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-         <%if(loggedUser!= undefined){%>
-         <button type="submit" class="btn btn-primary" onclick="tratarPostPublicacao(event)">Cadastrar</button>
-         <%}%>
-         </form>
-       </div>
+        </div>
      </div>
-   </div>
- </div>
- <!-- Bootstrap core JavaScript
- ================================================== -->
- <!-- Placed at the end of the document so the pages load faster -->
- <script src="js/jquery-1.9.1.js"></script>
- <script src="js/bootstrap.js"></script>
- <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+     <div class="ruler"></div>
+  </div>
+  <div class="footer-wrapper">
+      <div class="site-content">
+          <div class="container">
+              <div class="row">
 
- </body>
+
+              </div>
+          </div>
+      </div>
+      <div class="copy-rights">
+          <div class="container">
+              <div class="row">
+
+                  <div class="col-md-6">
+
+                  </div>
+                  <div class="col-md-6">
+
+                  </div>
+
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Modal form
+  ================================================== -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title" id="exampleModalLabel">Cadastrar Publicação</h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="publicacoes/new" method="POST" enctype="multipart/form-data">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="recipient-name" class="form-control-label">Título:</label>
+              <input type="text" class="form-control" id="recipient-name" name="titulo">
+              <label for="recipient-name" class="form-control-label">Ano:</label>
+              <input type="text" class="form-control" id="recipient-name" name="ano">
+              <label for="recipient-name" class="form-control-label">Local da Publicação:</label>
+              <input type="text" class="form-control" id="recipient-name" name="localPublicacao">
+              <label for="recipient-name" class="form-control-label">Forma de envio do pdf:</label>
+              <select class="link-pdf" name="link-pdf" onchange="tratarUpload(event)">
+                <option value="upload">Upload</option>
+                <option value="link">Link</option>
+              </select>
+              <input type="text" class="form-control element-hidden" id="recipient-name" name="link">
+              <input type="file" name="pdf" id="pdf" class="" accept="application/pdf">
+              <label for="recipient-name" class="form-control-label">ISSN:</label>
+              <input type="text" class="form-control" id="recipient-name" name="issn">
+              <label for="recipient-name" class="form-control-label">DOI:</label>
+              <input type="text" class="form-control" id="recipient-name" name="doi">
+              <label for="recipient-name" class="form-control-label">Autores</label>
+              <%for(var i = 0; i < membros.length; i++) { %>
+              <div class="radio">
+                 <label>
+                 <input type="checkbox" name="membros" id="test" value="<%=membros[i].nome%>" /> <%= membros[i].nome%>
+                 </label>
+              </div>
+              <%}%>
+              <label for="recipient-name" class="form-control-label">Colocação:</label>
+              <select class="colocacao" name="colocacao" onchange="tratarColocacao(event)">
+                <option value="Primeiro Colocado">Primeiro</option>
+                <option value="Segundo Colocado">Segundo</option>
+                <option value="Terceiro Colocado">Terceiro</option>
+                <option value="Não Premiado">Não Premiado</option>
+                <option value="-2">Colocação Manual</option>
+              </select>
+              <input type="text" class="form-control element-hidden" disabled= "true" id="colocacao-manual" name="colocacao">
+            </div>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <%if(loggedUser!= undefined){%>
+          <button type="submit" class="btn btn-primary" onclick="tratarPostPublicacao(event)">Cadastrar</button>
+          <%}%>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="js/jquery-1.9.1.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+  </body>
 </html>
