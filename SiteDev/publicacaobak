@@ -24,11 +24,11 @@
  </head>
 
  <body onload="tratarNomes()">
-   <div class="header-wrapper">
-       <div class="site-name">
-           <img src="img/logo-nova.png" alt="logo do grupo de pesquisa Side" class="logo">
-       </div>
-   </div>
+ <div class="header-wrapper">
+     <div class="site-name">
+       <h1>Side</h1>
+     </div>
+ </div>
  <div class="menu">
    <div class="navbar">
      <div class="container-fluid">
@@ -117,9 +117,9 @@
                                <span>. Premiação: <%=publicacoes[i].colocacao%></span>
                                <%}%>
                            <%if(publicacoes[i].link != ""){%>
-                           <span><a href="<%=publicacoes[i].link%>" target="_blank">Link para PDF</a></span>
+                           <span><a href="<%=publicacoes[i].link%>" target="_blank">Download PDF</a></span>
                            <%}else if(publicacoes[i].pdf !=""){%>
-                           <span><a href="/uploads/pdfs/<%=publicacoes[i].pdf%>" target="_blank">Link para PDF</a></span>
+                           <span><a href="/uploads/pdfs/<%=publicacoes[i].pdf%>" target="_blank">Download PDF</a></span>
                            <%}%>
                            </p>
                            <%if(loggedUser!= undefined){%>

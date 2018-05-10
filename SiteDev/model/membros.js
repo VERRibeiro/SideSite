@@ -6,7 +6,7 @@ var membro = Schema({
   email: String,
   titulo: String,
   tipo: String,
-  imagem: {type: String, default: 'default.jpeg'}
+  imagem: {type: String, default: 'default.png'}
 });
 
 var membros = db.model('membros',membro);
