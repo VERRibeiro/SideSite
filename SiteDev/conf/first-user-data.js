@@ -1,5 +1,5 @@
 module.exports = {
 	username: 'root',
-	password: 'root',
+	password: '20senhadoroot18',
 	role: 'root'
 }
