@@ -69,13 +69,6 @@
   </div>
 
   <!-- Main jumbotron for a primary marketing message or call to action -->
-  <div class="container-fluid no-padding">
-    <div class="row">
-      <div class="col-md-12">
-        <img src="img/banner-image.jpg" alt="placeholder 960" class="img-responsive centered-image banner" />
-      </div>
-    </div>
-  </div>
   <div class="container">
     <div class="featured-block">
         <form class="well form-horizontal" action="/cadastrar" method="post"  id="contact_form">
@@ -92,7 +85,7 @@
                   <% if(membros[i].tipo == 'professor'){ %>
                 <div class="radio">
                    <label>
-                   <input type="radio" name="username" value=<%=membros[i].email%> /> <%= membros[i].nome%>
+                   <input type="radio" name="email" value=<%=membros[i].email%> /> <%= membros[i].nome%>
                    </label>
                 </div>
                   <%}%>
@@ -104,7 +97,7 @@
               <div class="col-md-4 inputGroupContainer">
                 <div class="radio">
                    <label>
-                   <input type="radio" value="root" name="username" > Lider do Grupo
+                   <input type="radio" value="root" name="role" > Lider do Grupo
                    </label>
                 </div>
                 <div class="radio">
@@ -115,7 +108,15 @@
               </div>
             </div>
             <!-- Text input-->
-
+            <div class="form-group">
+              <label class="col-md-4 control-label">Username</label>
+              <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input name="username" class="form-control" type="text">
+                </div>
+              </div>
+            </div>
             <div class="form-group">
               <label class="col-md-4 control-label">Senha</label>
               <div class="col-md-4 inputGroupContainer">

@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var firstUserData = require('../conf/first-user-data');
 
 var usuarioSchema = Schema({
+  email: String,
   username:{
   type: String,
     index: true
@@ -38,7 +39,7 @@ module.exports.comparePassword = function(password, hash, next){
   bcrypt.compare(password, hash, function(err, isMatch) {
     if(err)
       throw err;
-      console.log(hash); 
+      console.log(hash);
       next(null, isMatch);
   });
 }

@@ -211,10 +211,10 @@
              <%}%>
              <label for="recipient-name" class="form-control-label">Colocação:</label>
              <select class="colocacao" name="colocacao" onchange="tratarColocacao(event)">
+               <option value="Não Premiado" selected="selected">Não Premiado</option>
                <option value="Primeiro Colocado">Primeiro</option>
                <option value="Segundo Colocado">Segundo</option>
                <option value="Terceiro Colocado">Terceiro</option>
-               <option value="Não Premiado">Não Premiado</option>
                <option value="-2">Colocação Manual</option>
              </select>
              <input type="text" class="form-control element-hidden" disabled= "true" id="colocacao-manual" name="colocacao">

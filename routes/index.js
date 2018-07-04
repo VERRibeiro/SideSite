@@ -261,13 +261,12 @@ router.post('/login',
     res.redirect('/');
   });
 router.post('/cadastrar', function(req, res, next) {
-  console.log(req.body.username);
-  console.log(req.body.password);
-  console.log(req.body.role);
+  var email = req.body.email;
   var username = req.body.username;
   var password = req.body.password;
   var role = req.body.role;
   var novoUsuario = new usuario({
+    email : email,
     username: username,
     password: password,
     role : role
