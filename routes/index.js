@@ -144,6 +144,17 @@ router.post('/add-membro',multer(multerConf).single('imagem'),(req,res,next) =>{
   membros.save();
   res.redirect('/membros');
 });
+router.post('/update-membro',multer(multerConf).single('imagem'),(req,res,next) =>{
+  if(req.file){
+    req.body.imagem = req.file.filename;
+  }
+  var membros = new membrosModel(req.body);
+  membros.findByIdAndUpdate(req.user._id, novoUsuario, function(callback){
+    res.redirect('/membros');
+  });
+  console.log(membros);
+  res.redirect('/membros');
+});
 
 router.get('/projetos',(req, res, next)=>{
   async.parallel({

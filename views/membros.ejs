@@ -17,6 +17,7 @@
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
+      <script src="js/membros.js"></script>
    </head>
    <body>
      <div class="header-wrapper">
@@ -81,12 +82,13 @@
                      <div class="col-md-4 col-sm-6">
                         <div class="block">
                            <div class="thumbnail linhas-block">
-                              <div class="caption">
+                              <div class="caption" id="<%=membros[i]._id%>">
                                 <img src="uploads/<%=membros[i].imagem%>" alt="imagem" class="img-responsive profile-image centered-image rounded-image">
                                 <h3 class="membros center-text"><%=membros[i].nome%></h3>
                                 <h3 class="membros center-text"><%=membros[i].titulo%></h3>
                                 <%if(loggedUser!= undefined){%>
                                  <a href="/delete-membro/<%= membros[i]._id%>" class="btn btn-primary">Deletar</a>
+                                 <button onclick="autoFill('<%=membros[i].nome%>','<%=membros[i].titulo%>','<%=membros[i].email%>')"type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal" data-whatever="@getbootstrap">Atualizar Membro</button>
                                 <%}%>
                               </div>
                            </div>
@@ -114,6 +116,7 @@
                                  <h3 class="membros center-text"><%=membros[i].titulo%></h3>
                                  <%if(loggedUser!= undefined){%>
                                   <a href="/delete-membro/<%= membros[i]._id%>" class="btn btn-primary">Deletar</a>
+                                  <button onclick="autoFill('<%=membros[i].nome%>','<%=membros[i].titulo%>','<%=membros[i].email%>')"type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal" data-whatever="@getbootstrap">Atualizar Membro</button>
                                  <%}%>
                               </div>
                            </div>
@@ -141,6 +144,7 @@
                                  <h3 class="membros center-text"><%=membros[i].titulo%></h3>
                                  <%if(loggedUser!= undefined){%>
                                  <a href="/delete-membro/<%= membros[i]._id%>" class="btn btn-primary">Deletar</a>
+                                 <button onclick="autoFill('<%=membros[i].nome%>','<%=membros[i].titulo%>','<%=membros[i].email%>')"type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal" data-whatever="@getbootstrap">Atualizar Membro</button>
                                  <%}%>
                               </div>
                            </div>
@@ -192,6 +196,43 @@
                   <input type="text" class="form-control" id="recipient-name" name="email">
                   <label for="recipient-name" class="form-control-label">Titulação:</label>
                   <input type="text" class="form-control" id="recipient-name" name="titulo">
+                  <label for="recipient-name" class="form-control-label">Professor</label>
+                  <input type="radio" id="radioButton" name="tipo" value="professor" checked><br>
+                  <label for="recipient-name" class="form-control-label" >Aluno</label>
+                  <input type="radio" id="radioButton" name="tipo" value="aluno"><br>
+                  <label for="recipient-name" class="form-control-label">Exmembro</label>
+                  <input type="radio" id="radioButton" name="tipo" value="exmembro">
+                  <input type="file" name="imagem" id="imagem" accept="image/*">
+                </div>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+              <%if(loggedUser!= undefined){%>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+              <%}%>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title" id="exampleModalLabel">Cadastrar Membro</h1>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="update-membro" method="POST" enctype="multipart/form-data">
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="recipient-name" class="form-control-label">Nome:</label>
+                  <input type="text" class="form-control" id="recipient-nome" name="nome">
+                  <label for="recipient-name" class="form-control-label">Email:</label>
+                  <input type="text" class="form-control" id="recipient-email" name="email">
+                  <label for="recipient-name" class="form-control-label">Titulação:</label>
+                  <input type="text" class="form-control" id="recipient-titulo" name="titulo">
                   <label for="recipient-name" class="form-control-label">Professor</label>
                   <input type="radio" id="radioButton" name="tipo" value="professor" checked><br>
                   <label for="recipient-name" class="form-control-label" >Aluno</label>
