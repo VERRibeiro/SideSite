@@ -153,8 +153,8 @@ generic styles starts here
 ************************************************/
 .featured-block{padding:15px 0; overflow: hidden;}
 .featured-block .block{margin-top: 2%;}
-.featured-block .block .thumbnail{box-shadow: 0 3px 3px 0 #e0e0e0; border: 0px;}
-.featured-block .caption{padding: 25px 15px; background:white ;}
+.featured-block .block .thumbnail{box-shadow: 0 3px 3px 0 #e0e0e0;}
+.featured-block .caption{padding: 25px 15px;}
 .featured-block .caption h1{font-size: 25px; line-height: 24px;color: #006482; text-transform: uppercase;font-family: 'Roboto', sans-serif;  padding-bottom: 10px; letter-spacing: 1px;}
 .featured-block .caption p{font-size: 20px; line-height: 24px;color: #194154;font-family: 'Roboto', sans-serif;  padding-bottom: 10px; letter-spacing: 1px;}
 .featured-block .caption .btn{color: #fff; background: #006482; font-size: 12px; font-family: 'source_sans_problack'; border-radius: 30px; text-transform: uppercase; line-height: 13px;}
@@ -288,7 +288,8 @@ float: left;}
   width: 1000px;
 }
 .row-fix { margin-right: 0px !important; }
-
+.banner-text{color: #4b4b4b; font-size: 14px;}
+.icons{font-size: 20px;}
 /************************************************
   Responsive Tweaks starts here
 ************************************************/
