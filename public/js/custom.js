@@ -32,13 +32,14 @@ function tratarColocacao(event){
   }
 }
 function tratarUpload(event){
+
   var uploadSelect = event.target;
   var selectedIndex = uploadSelect.selectedIndex;
   var selectedOption = uploadSelect.options[selectedIndex];
   var form = document.forms[0];
   var linkInput = form.querySelector('input[name="link"]');
   var pdfInput = document.getElementById('pdf');
-  console.log(linkInput);
+
   if(selectedOption.value === 'link') {
     linkInput.classList.remove('element-hidden');
     linkInput.value = "";

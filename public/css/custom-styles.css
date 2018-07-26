@@ -151,9 +151,9 @@ Menu styles starts here
 /************************************************
 generic styles starts here
 ************************************************/
-.featured-block{padding:15px 0; overflow: hidden;}
+.featured-block{padding:15px 0; overflow: hidden; border-top: 1px solid;}
 .featured-block .block{margin-top: 2%;}
-.featured-block .block .thumbnail{box-shadow: 0 3px 3px 0 #e0e0e0;}
+.featured-block .block .thumbnail{box-shadow: 0 3px 3px 0 #e0e0e0;background-color: #f2f2f2;}
 .featured-block .caption{padding: 25px 15px;}
 .featured-block .caption h1{font-size: 25px; line-height: 24px;color: #006482; text-transform: uppercase;font-family: 'Roboto', sans-serif;  padding-bottom: 10px; letter-spacing: 1px;}
 .featured-block .caption p{font-size: 20px; line-height: 24px;color: #194154;font-family: 'Roboto', sans-serif;  padding-bottom: 10px; letter-spacing: 1px;}
@@ -232,6 +232,7 @@ sidebar styles starts here
 Footer styles starts here
 ************************************************/
 .footer-wrapper{background: #3b3e4a;}
+
 .site-content{padding: 55px 0; overflow: hidden;}
 .site-content .block h1{font-size: 18px; line-height: 24px; color: #fff; text-transform: uppercase; font-family: 'source_sans_probold'; padding-bottom: 10px;}
 .site-content .block ul{margin: 0; padding: 0;}
@@ -266,7 +267,7 @@ Footer styles starts here
 .featured-block .caption .project-title{font-size: 25px; line-height: 20px;color: #37d2ab;font-family: "Times New Roman", Times, serif;  padding-bottom: 10px; letter-spacing: 1px;}
 .featured-block .caption h2{font-size: 23px; line-height: 24px;color: #006482; text-transform: uppercase;font-family: 'Roboto', sans-serif;  padding-bottom: 10px; letter-spacing: 1px;}
 .banner{-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75)};
-.ativo{background-color:red !important;}
+/* .ativo{color:#46D7FF !important;} */
 .element-hidden{display: none !important;}
 .custom-label{text-align: left !important;}
 .autores-name{}
@@ -274,7 +275,7 @@ Footer styles starts here
 box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);}
 @media (max-width: 768px){.featured-block .block img.profile-image{width: 150px !important; height: 150px !important;} .banner-text{color: #4b4b4b; font-size: 12px;}}
 @media (max-width: 924px){.navbar-nav > li > a{font-size: 12px;} }
-/* .navbar-nav > li > .ativo{background-color: #079EC8;} */
+.navbar-nav > li > .ativo{color: #079EC8;}
 .navbar-nav > li > a:hover {
 color: #46D7FF;
 }
@@ -287,10 +288,11 @@ float: left;}
 .logo-nav{
   width: 1000px;
 }
+.main-container{max-width: 90% ;}
 .row-fix { margin-right: 0px !important; }
 .banner-text{color: #4b4b4b; font-size: 20px;}
 .icons{font-size: 20px;}
-.index-icon{font-size: 30px; margin:10px 10px 0 10px; float: left;}
+.index-icon{font-size: 30px; margin:10px 10px 0 10px; float: left; color: #46D7FF;}
 .item-title{margin: 15px 5px 5px 5px;}
 /************************************************
   Responsive Tweaks starts here

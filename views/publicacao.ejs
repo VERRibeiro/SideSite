@@ -24,46 +24,36 @@
  </head>
 
  <body onload="tratarNomes()">
-   <div class="header-wrapper">
-       <div class="site-name">
-           <img src="img/logo-nova.png" alt="logo do grupo de pesquisa Side" class="logo">
+   <div class="menu">
+     <div class="navbar">
+       <a class="ativo" href="/"><img src="img/logo-nova.png" alt="logo do grupo de pesquisa Side" class="logo"></a>
+       <div class="container-fluid logo-nav">
+         <div class="navbar-collapse collapse">
+           <ul class="nav navbar-nav">
+             <li><a href="/membros">Membros</a></li>
+             <li><a href="/projetos">Projetos</a></li>
+             <li><a class="ativo" href="/publicacao">Publicações</a></li>
+             <li><a href="/patentes">Propriedade Intelectual</a></li>
+             <li><a href="/sobre">Sobre</a></li>
+             <li><a href="/contato">Contato</a></li>
+           </ul>
+         </div><!--/.navbar-collapse -->
        </div>
-   </div>
- <div class="menu">
-   <div class="navbar">
-     <div class="container-fluid">
-       <div class="navbar-header">
-         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-           <i class="fw-icon-th-list"></i>
-         </button>
-       </div>
-       <div class="navbar-collapse collapse">
-         <ul class="nav navbar-nav">
-           <li><a href="/">Home</a></li>
-           <li><a href="/membros">Membros</a></li>
-           <li><a href="/projetos">Projetos</a></li>
-           <li><a href="/publicacao" class="ativo">Publicações</a></li>
-           <li><a href="/patentes">Propriedade Intelectual</a></li>
-           <li><a href="/sobre">Sobre</a></li>
-           <li><a href="/contato">Contato</a></li>
-         </ul>
-       </div><!--/.navbar-collapse -->
+     </div>
+     <div class="mini-menu">
+       <label>
+         <select class="selectnav" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+           <option value="/" selected="">Home</option>
+           <option value="/membros">Membros</option>
+           <option value="/projetos">Projetos</option>
+           <option value="/publicacao">Publicações</option>
+           <option value="/patentes">Propriedade Intelectual</option>
+           <option value="/sobre">Sobre</option>
+           <option value="contato">Contato</option>
+         </select>
+       </label>
      </div>
    </div>
-   <div class="mini-menu">
-     <label>
-       <select class="selectnav" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-         <option value="/">Home</option>
-         <option value="/membros">Membros</option>
-         <option value="/projetos">Projetos</option>
-         <option value="/publicacao" selected="">Publicações</option>
-         <option value="/patentes">Propriedade Intelectual</option>
-         <option value="/sobre">Sobre</option>
-         <option value="/contato">Contato</option>
-       </select>
-     </label>
-   </div>
- </div>
 
 
  <div class="container">
@@ -147,14 +137,6 @@
     <div class="ruler"></div>
  </div>
  <div class="footer-wrapper">
-     <div class="site-content">
-         <div class="container">
-             <div class="row">
-
-
-             </div>
-         </div>
-     </div>
      <div class="copy-rights">
          <div class="container">
              <div class="row">
@@ -195,7 +177,7 @@
                <option value="upload">Upload</option>
                <option value="link">Link</option>
              </select>
-             <input type="text" class="form-control element-hidden" id="recipient-name" name="link">
+             <input type="text" class="element-hidden form-control" id="recipient-name" name="link">
              <input type="file" name="pdf" id="pdf" class="" accept="application/pdf">
              <label for="recipient-name" class="form-control-label">ISSN:</label>
              <input type="text" class="form-control" id="recipient-name" name="issn">
