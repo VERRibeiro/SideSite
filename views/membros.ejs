@@ -214,6 +214,7 @@
                 <div class="form-group">
                   <label for="recipient-name" class="form-control-label">Nome:</label>
                   <input type="text" class="form-control" id="recipient-nome" name="nome">
+                  <input type="text" class="form-control hidden" id="recipient-nome-antigo" name="nomeAntigo">
                   <label for="recipient-name" class="form-control-label">Email:</label>
                   <input type="text" class="form-control" id="recipient-email" name="email">
                   <label for="recipient-name" class="form-control-label">Titulação:</label>
@@ -230,7 +231,7 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
               <%if(loggedUser!= undefined){%>
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <button type="submit" class="btn btn-primary">Atualizar</button>
               <%}%>
               </form>
             </div>

@@ -144,16 +144,27 @@ router.post('/add-membro',multer(multerConf).single('imagem'),(req,res,next) =>{
   membros.save();
   res.redirect('/membros');
 });
+
 router.post('/update-membro',multer(multerConf).single('imagem'),(req,res,next) =>{
   if(req.file){
     req.body.imagem = req.file.filename;
   }
-  var membros = new membrosModel(req.body);
-  membros.findByIdAndUpdate(req.user._id, novoUsuario, function(callback){
-    res.redirect('/membros');
+  var query = {nome: req.body.nomeAntigo};
+  membrosModel.findOne(query,(err, membroAtualizado) =>{
+      if(!err){
+        console.log(membroAtualizado);
+        membroAtualizado.nome = req.body.nome;
+        membroAtualizado.email = req.body.email;
+        membroAtualizado.titulo = req.body.titulo;
+        membroAtualizado.tipo = req.body.tipo;
+        membroAtualizado.imagem = req.body.imagem;
+        membrosModel.findByIdAndUpdate(membroAtualizado._id, membroAtualizado, (callback) =>{
+          res.redirect('/membros');
+        });
+      }else{
+        res.redirect('/membros');
+      }
   });
-  console.log(membros);
-  res.redirect('/membros');
 });
 
 router.get('/projetos',(req, res, next)=>{
@@ -247,10 +258,7 @@ router.post('/alterar-senha', function(req, res, next){
   var novoUsuario = req.user;
   bcrypt.genSalt(10, function(err, salt) {
     bcrypt.hash(req.body.password, salt, function(err, hash) {
-      console.log(novoUsuario.password);
-      console.log(req.body.password);
       novoUsuario.password = hash;
-      console.log(novoUsuario.password);
       novoUsuario.save();
       usuario.findByIdAndUpdate(req.user._id, novoUsuario, function(callback){
         res.redirect('/user');
