@@ -53,7 +53,7 @@
           <option value="/publicacao">Publicações</option>
           <option value="/patentes">Propriedade Intelectual</option>
           <option value="/sobre">Sobre</option>
-          <option value="contato">Contato</option>
+          <option value="/contato">Contato</option>
         </select>
       </label>
     </div>
@@ -90,8 +90,11 @@
                             <% } %>
                           </p>
                             <h3 class="membros-name">Data de início: <%=moment(projetos[i].dataInicio).format('DD/MM/YYYY')%></h3>
+                            <h3 class="membros-name">Financiador: <%=projetos[i].financiador%></h3>
+                            <h3 class="membros-name">Tipo: <%=projetos[i].tipo%></h3>
                             <%if(loggedUser!= undefined){%>
                             <a href="/delete-projeto/<%=projetos[i]._id%>" class="btn btn-primary">Deletar</a>
+                            <button onclick="autoFillAtual('<%=projetos[i].titulo%>','<%=moment(projetos[i].dataInicio).format('DD/MM/YYYY')%>','<%=projetos[i].financiador%>','<%=projetos[i].tipo%>')"type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal" data-whatever="@getbootstrap">Editar</button>
                             <%}%>
                         </div>
                      </div>
@@ -131,6 +134,7 @@
                                 <h3 class="membros-name">Tipo: <%=projetos[i].tipo%></h3>
                                 <%if(loggedUser!= undefined){%>
                                 <a href="/delete-projeto/<%=projetos[i]._id%>" class="btn btn-primary">Deletar</a>
+                                <button onclick="autoFillAntigo('<%=projetos[i].titulo%>','<%=moment(projetos[i].dataInicio).format('DD/MM/YYYY')%>','<%=moment(projetos[i].dataFim).format('DD/MM/YYYY')%>','<%=projetos[i].financiador%>','<%=projetos[i].tipo%>')"type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal" data-whatever="@getbootstrap">Editar</button>
                                 <%}%>
                             </div>
                          </div>
@@ -206,6 +210,49 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel">Cadastrar Projeto</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="update-projeto" method="POST">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="recipient-name" class="form-control-label">Titulo:</label>
+            <input type="text" class="form-control hidden" id="recipient-titulo-antigo" name="tituloAntigo">
+            <input type="text" class="form-control" id="recipient-titulo" name="titulo">
+            <label for="recipient-name" class="form-control-label">Data de início:</label>
+            <input type="date" class="form-control" id="recipient-dataInicio" name="dataInicio">
+            <label for="recipient-name" class="form-control-label">Data final:</label>
+            <input type="date" class="form-control" id="recipient-dataFim" name="dataFim">
+            <label for="recipient-name" class="form-control-label">Financiador:</label>
+            <input type="text" class="form-control" id="recipient-financiador" name="financiador">
+            <label for="recipient-name" class="form-control-label">Tipo:</label>
+            <input type="text" class="form-control" id="recipient-tipo" name="tipo">
+            <label for="recipient-name" class="form-control-label">Autores</label>
+            <%for(var i = 0; i < membros.length; i++) { %>
+            <div class="radio">
+               <label>
+               <input type="checkbox" name="membros" value="<%=membros[i].nome%>" /> <%= membros[i].nome%>
+               </label>
+            </div>
+            <%}%>
+          </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <%if(loggedUser!= undefined){%>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <%}%>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -213,6 +260,7 @@
 <script src="js/jquery-1.9.1.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<script src="js/projetos.js"></script>
 
 
 </body>

@@ -221,6 +221,27 @@ router.post('/add-projeto',(req,res,next) =>{
   });
 });
 
+router.post('/update-membro',multer(multerConf).single('imagem'),(req,res,next) =>{
+  if(req.file){
+    req.body.imagem = req.file.filename;
+  }
+  var query = {nome: req.body.nomeAntigo};
+  membrosModel.findOne(query,(err, membroAtualizado) =>{
+      if(!err){
+        membroAtualizado.nome = req.body.nome;
+        membroAtualizado.email = req.body.email;
+        membroAtualizado.titulo = req.body.titulo;
+        membroAtualizado.tipo = req.body.tipo;
+        membroAtualizado.imagem = req.body.imagem;
+        membrosModel.findByIdAndUpdate(membroAtualizado._id, membroAtualizado, (callback) =>{
+          res.redirect('/membros');
+        });
+      }else{
+        res.redirect('/membros');
+      }
+  });
+});
+
 router.get('/delete-linha/:id', function(req, res, next) {
   var id = req.params.id;
   model.findByIdAndRemove(id, (err, linha) => {
