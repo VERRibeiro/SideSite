@@ -221,23 +221,22 @@ router.post('/add-projeto',(req,res,next) =>{
   });
 });
 
-router.post('/update-membro',multer(multerConf).single('imagem'),(req,res,next) =>{
-  if(req.file){
-    req.body.imagem = req.file.filename;
-  }
-  var query = {nome: req.body.nomeAntigo};
-  membrosModel.findOne(query,(err, membroAtualizado) =>{
+router.post('/update-projeto', (req,res,next) =>{
+  var query = {titulo: req.body.tituloAntigo};
+  projetosModel.findOne(query,(err, projetoAtualizado) =>{
       if(!err){
-        membroAtualizado.nome = req.body.nome;
-        membroAtualizado.email = req.body.email;
-        membroAtualizado.titulo = req.body.titulo;
-        membroAtualizado.tipo = req.body.tipo;
-        membroAtualizado.imagem = req.body.imagem;
-        membrosModel.findByIdAndUpdate(membroAtualizado._id, membroAtualizado, (callback) =>{
-          res.redirect('/membros');
+        projetoAtualizado.titulo = req.body.titulo;
+        projetoAtualizado.dataInicio = req.body.dataInicio;
+        projetoAtualizado.dataFim = req.body.dataFim;
+        projetoAtualizado.tipo = req.body.tipo;
+        projetoAtualizado.financiador = req.body.financiador;
+        projetoAtualizado.membros = req.body.membros;
+        projetosModel.findByIdAndUpdate(projetoAtualizado._id, projetoAtualizado, (callback) =>{
+          console.log(projetoAtualizado);
+          res.redirect('/projetos');
         });
       }else{
-        res.redirect('/membros');
+        res.redirect('/projetos');
       }
   });
 });
