@@ -14,9 +14,9 @@
       <link rel="stylesheet" href="css/component.css">
       <link rel="stylesheet" href="css/custom-styles.css">
       <link rel="stylesheet" href="css/font-awesome.css">
-      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-      <link rel="stylesheet" href="css/demo.css">
+
+
       <link rel="stylesheet" href="css/font-awesome-ie7.css">
 
       <script src="js/html5shiv.js"></script>
@@ -25,55 +25,56 @@
   </head>
 
   <body>
-  <div class="menu">
-    <div class="navbar">
-      <a href="/"><img src="img/logo-nova.png" alt="logo do grupo de pesquisa Side" class="logo mini-logo"></a>
-      <div class="container-fluid logo-nav">
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="/membros">Membros</a></li>
-            <li><a href="/projetos">Projetos</a></li>
-            <li><a href="/publicacao">Publicações</a></li>
-            <li><a href="/patentes">Propriedade Intelectual</a></li>
-            <li><a href="/sobre">Sobre</a></li>
-            <li><a href="/contato">Contato</a></li>
-          </ul>
-        </div><!--/.navbar-collapse -->
+    <div class="menu">
+      <div class="navbar">
+        <a class="ativo" href="/"><img src="img/logo-nova.png" alt="logo do grupo de pesquisa Side" class="logo"></a>
+        <div class="container-fluid logo-nav">
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="/membros">Membros</a></li>
+              <li><a href="/projetos">Projetos</a></li>
+              <li><a href="/publicacao">Publicações</a></li>
+              <li><a href="/patentes">Propriedade Intelectual</a></li>
+              <li><a href="/sobre">Sobre</a></li>
+              <li><a href="/contato">Contato</a></li>
+            </ul>
+          </div><!--/.navbar-collapse -->
+        </div>
+      </div>
+      <div class="mini-menu">
+        <a href="/"><img src="img/logo-nova.png" alt="logo do grupo de pesquisa Side" class="logo mini-logo"></a>
+        <label>
+          <select class="selectnav" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+            <option value="/" selected="">Home</option>
+            <option value="/membros">Membros</option>
+            <option value="/projetos">Projetos</option>
+            <option value="/publicacao">Publicações</option>
+            <option selected="" value="/patentes">Propriedade Intelectual</option>
+            <option value="/sobre">Sobre</option>
+            <option value="contato">Contato</option>
+          </select>
+        </label>
       </div>
     </div>
-    <div class="mini-menu">
-      <label>
-        <select class="selectnav" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-          <option value="/" selected="">Home</option>
-          <option value="/membros">Membros</option>
-          <option value="/projetos">Projetos</option>
-          <option value="/publicacao">Publicações</option>
-          <option value="/patentes">Propriedade Intelectual</option>
-          <option value="/sobre">Sobre</option>
-          <option value="contato">Contato</option>
-        </select>
-      </label>
-    </div>
-  </div>
+    <div class="banner">
 
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+              <div class="item active">
+                  <img src="img/banner-image.jpg" alt="placeholder 960" class="img-responsive centered-image banner" />
+                  <div class="carousel-caption">
+                    <p class="banner-text">Bem vindo ao site do Grupo de Pesquisa Semantics in Data Environments (SIDE) do
+                        Instituto Federal de Educação, Ciência e Tecnologia da Paraíba, Brasil.
+                     </p>
+                  </div>
+              </div>
+      </div>
+
+  </div>
   <!-- Main jumbotron for a primary marketing message or call to action -->
   <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="container">
-  <div class="banner">
-    <div class="carousel slide">
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-            <div class="item active">
-                <img src="img/banner-image.jpg" alt="placeholder 960" class="img-responsive centered-image banner" />
-                <div class="carousel-caption">
-                  <p class="banner-text">Bem vindo ao site do Grupo de Pesquisa Semantics in Data Environments (SIDE) do
-                      Instituto Federal de Educação, Ciência e Tecnologia da Paraíba, Brasil.
-                   </p>
-                </div>
-            </div>
-    </div>
-  </div>
-</div>
+
 
   <div class="container" id="main">
       <div class="featured-block">
