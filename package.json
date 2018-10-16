@@ -19,6 +19,7 @@
     "express-messages": "^1.0.1",
     "express-session": "^1.15.6",
     "express-validator": "^4.3.0",
+    "hoek": "^5.0.4",
     "moment": "^2.20.1",
     "mongodb": "^3.0.0-rc0",
     "mongoose": "^4.13.6",
