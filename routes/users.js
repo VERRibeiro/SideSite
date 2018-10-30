@@ -1,4 +1,4 @@
-var express = require('express');
+ar express = require('express');
 var router = express.Router();
 var usuario = require('../model/users');
 /* GET users listing. */
